@@ -1,0 +1,32 @@
+[
+  {
+    "target": ".deps/ccsds124/src/compress.c",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/implementations/c/src/compress.c",
+    "sha256": "4c9baa0a37034c511169a2ca66ccd62cc640e0c5698a3a80fab3527a8576cfcf"
+  },
+  {
+    "target": ".deps/ccsds124/src/encode.c",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/implementations/c/src/encode.c",
+    "sha256": "4c071c7a2857be5ed196d72027748d09c3e9c34054f8d9271cccec7d3ff568f3"
+  },
+  {
+    "target": ".deps/ccsds124/src/bitbuffer.c",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/implementations/c/src/bitbuffer.c",
+    "sha256": "b254634f1f3dca83bb3efb17f57c99517931550e0eceed98db22571cbb502e9b"
+  },
+  {
+    "target": ".deps/ccsds124/src/mask.c",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/implementations/c/src/mask.c",
+    "sha256": "7587903cdb9b70e6d03d388680d5c8fc38bce60d6df89ba317e70e999045bda1"
+  },
+  {
+    "target": ".deps/data/venus-express.ccsds",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/test-vectors/input/venus-express.ccsds",
+    "sha256": "96fe8cdf2b862911bf3499c699dee1b58a080205e3e892d2c66a44082dae72c1"
+  },
+  {
+    "target": ".deps/data/venus-express-metadata.json",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/test-vectors/expected-output/venus-express-metadata.json",
+    "sha256": "b78386ffb045a899114fd697a827d4c6617ab7580de2598774f25f0346ba3df3"
+  }
+]

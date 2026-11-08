@@ -1,0 +1,75 @@
+{
+  "compiler": "arm-none-eabi-gcc.exe (Arm GNU Toolchain 15.2.Rel1 (Build arm-15.86)) 15.2.1 20251203",
+  "flags": [
+    "-mcpu=cortex-m4",
+    "-mthumb",
+    "-O2",
+    "-std=c99",
+    "-fwrapv",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-nostdlib",
+    "-DCCSDS124_MAX_PACKET_LENGTH=720"
+  ],
+  "dataset_sha256": "96fe8cdf2b862911bf3499c699dee1b58a080205e3e892d2c66a44082dae72c1",
+  "elf_sha256": "c7e7186ac7cf4cb5eff87e2775f027b73bb116bd67b12caddfb240ba15c735f5",
+  "cases_csv_sha256": "38ec6c013990320a7c29fcf196f7914da0d3ad3b60f1b7476ad26211e5208a26",
+  "frames_csv_sha256": "7eb6fe937b9eeb56bca33647ca01cc9cdffddfe3be88dcf78d7d7e968feb3792",
+  "slice_starts": [
+    0,
+    75000,
+    150176
+  ],
+  "packets_per_case": 224,
+  "fault_index": 101,
+  "fault_bits": [
+    0,
+    31,
+    32,
+    63,
+    64,
+    127,
+    255,
+    511,
+    719
+  ],
+  "physical_measurements": false,
+  "measurements": {
+    "cases": 60,
+    "frames": 13440,
+    "by_period": {
+      "10": {
+        "fault_cases": 27,
+        "cases_with_wrong_guaranteed": 16,
+        "wrong_guaranteed_without_crc": 142,
+        "wrong_delivered_with_crc": 0,
+        "maximum_gap_with_crc": 19,
+        "basic_wrong_delivered_with_crc": 0,
+        "basic_maximum_gap_with_crc": 9,
+        "stable_by_next_reference": 3,
+        "basic_stable_by_next_reference": 27,
+        "clean_payload_and_crc_bytes": [
+          13664,
+          11410,
+          12245
+        ]
+      },
+      "100": {
+        "fault_cases": 27,
+        "cases_with_wrong_guaranteed": 16,
+        "wrong_guaranteed_without_crc": 576,
+        "wrong_delivered_with_crc": 0,
+        "maximum_gap_with_crc": 99,
+        "basic_wrong_delivered_with_crc": 0,
+        "basic_maximum_gap_with_crc": 99,
+        "stable_by_next_reference": 22,
+        "basic_stable_by_next_reference": 27,
+        "clean_payload_and_crc_bytes": [
+          11717,
+          9394,
+          10265
+        ]
+      }
+    }
+  }
+}

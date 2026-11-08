@@ -18,8 +18,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 1815,
-      "sha256": "ce9a36e2d6967a3f19b25716b295cc555fff6ea8e6f6d04174745f71c8871c8b"
+      "bytes": 2291,
+      "sha256": "91f4fbbf81dd84e7b2895b2932bffbc424e254d623468c44e97220c17570bbe7"
     },
     {
       "path": "THIRD_PARTY_LICENSES/ccsds124-MIT.txt",
@@ -28,13 +28,13 @@
     },
     {
       "path": "THIRD_PARTY_NOTICES.md",
-      "bytes": 384,
-      "sha256": "b1a6643d3120137ee9da38e55f79aba4cd2223c8d2d8b805c59dfaaf77256257"
+      "bytes": 492,
+      "sha256": "21510ee60683d78dd1c5775f47a66e0a4495c1dae536c1f0244fe14026f99313"
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 1271,
-      "sha256": "e1aa3c91ffbecd82e30c749b9bb57ba56569248dc9c9d9a011157d39050b4e26"
+      "bytes": 1525,
+      "sha256": "463c0629fa96e2b6ad4d97b45f409b354239ba3ea914519014084dbf2916bdec"
     },
     {
       "path": "dependencies.lock.json",
@@ -45,6 +45,11 @@
       "path": "docs/original-research.md",
       "bytes": 3568,
       "sha256": "4f9dbef57b4b9c4b8ae1dc40dbd0e93f2fabc3bec259e8a4a6baa3129525bbae"
+    },
+    {
+      "path": "docs/venus-state-replay.md",
+      "bytes": 5047,
+      "sha256": "961a6e97fa41242003cb2d38ba521de3fc6b24e59069a85bc53de8ef8517404e"
     },
     {
       "path": "evidence/packaging-20261022/execution.log",
@@ -65,6 +70,21 @@
       "path": "evidence/recorded/results.json",
       "bytes": 24873,
       "sha256": "d2a22e78669b6fe9944eefc42182c9fd6112d79a82e6a1d82fcbbd63f4933397"
+    },
+    {
+      "path": "evidence/venus-state/cases.csv",
+      "bytes": 6882,
+      "sha256": "38ec6c013990320a7c29fcf196f7914da0d3ad3b60f1b7476ad26211e5208a26"
+    },
+    {
+      "path": "evidence/venus-state/frames.csv",
+      "bytes": 863659,
+      "sha256": "7eb6fe937b9eeb56bca33647ca01cc9cdffddfe3be88dcf78d7d7e968feb3792"
+    },
+    {
+      "path": "evidence/venus-state/summary.json",
+      "bytes": 1948,
+      "sha256": "05fab1df711b3662e928db901c0e49bd715344da2b029e7ab3b177be93576f84"
     },
     {
       "path": "package.json",
@@ -97,6 +117,11 @@
       "sha256": "4b0ebf8a47e0e620e46c1f85b96b47dde4f60b6fc6f91a402aaf5dc8fe435f5f"
     },
     {
+      "path": "src/venus_state.c",
+      "bytes": 4710,
+      "sha256": "08fc12737a9fdc5fe226d055f9a091c5ebde9fb89ea50657f4793c294e47a890"
+    },
+    {
       "path": "src/verify_counterexample.py",
       "bytes": 4266,
       "sha256": "0b19fd53607fb50b5585008e06c30ff7bf1e871411fca1287471b399996b6098"
@@ -107,14 +132,24 @@
       "sha256": "887c00608416a9a79002f6690e1fb709f79bd1762066d5f556e4a08a50b97032"
     },
     {
+      "path": "tests/run_venus.py",
+      "bytes": 10651,
+      "sha256": "cbd7792015d65c39a699055f3ab85abe295ea150ec96fea7c0d95080aa4f89b8"
+    },
+    {
       "path": "tools/bootstrap.py",
-      "bytes": 1964,
-      "sha256": "36cab15f888f06432d2e41f9cf4aa4a0f3d1023dee2352a8c13ae4353d262412"
+      "bytes": 1988,
+      "sha256": "b26e8f0e7e41cba21a3e1006bda0df97a48a87926e31de09d9652a22c9ad9a97"
     },
     {
       "path": "tools/lab.py",
       "bytes": 2047,
       "sha256": "1b45a75434723d108fad04c55557cd8f7179902c28b24f77db6993a70f950a22"
+    },
+    {
+      "path": "venus.dependencies.lock.json",
+      "bytes": 1719,
+      "sha256": "506b366d86f3ad26dc13d0d1791ada56a999bc561ba300cb061debd5bac501a8"
     }
   ]
 }

@@ -8,8 +8,8 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def bootstrap(group=None):
-    specs = json.loads((ROOT / 'dependencies.lock.json').read_text(encoding='utf-8'))
+def bootstrap(group=None, *, lock_name='dependencies.lock.json'):
+    specs = json.loads((ROOT / lock_name).read_text(encoding='utf-8'))
     for item in specs:
         if group and item.get('group') != group:
             continue

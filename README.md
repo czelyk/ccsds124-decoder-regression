@@ -4,7 +4,7 @@ An independent, fixed-wire ARM replay of a known checked-decoder accuracy counte
 
 ## Run
 
-Requirements: Python 3.12 and Arm GNU Toolchain (ARM_GCC or PATH). On Linux/macOS use .venv/bin/python..
+Requirements: Python 3.12 and Arm GNU Toolchain (ARM_GCC or PATH). On Linux/macOS use `.venv/bin/python`.
 
 ```powershell
 python -m venv .venv
@@ -22,9 +22,24 @@ rerunning the experiment. New runs go to ignored `runs/` directories (or
 - `evidence/recorded/results.json`: original fixed-wire controls and counterexample traces.
 - `tools/bootstrap.py`: checksum-pinned public upstream downloads.
 
+## Encoder-state replay on Venus Express telemetry
+
+The separate replay flips one bit of the C encoder's stored mask and compares
+checked decoding with a basic decoding path on the same wire packets. The
+source CRC filtered all wrong outputs marked guaranteed in the tested matrix.
+At a ten-sample reference cadence, the longest observed gap was 19 samples
+with checked decoding and nine with the basic path. [Experiment and evidence](docs/venus-state-replay.md)
+
+```powershell
+.venv/Scripts/python tests/run_venus.py --check
+```
+
 ## Scope
 
-A passing test means the archived discrepancy was reproduced, not that the decoder was repaired. Four builds and eight reception configurations exercise one fixed counterexample. This is CPU emulation, not physical STM32 testing. The separate older extended POCKET+ report ZIP is not bundled or claimed reproduced.
+The original test reproduces a fixed counterexample across four builds and
+eight reception configurations. The Venus Express replay is a separate
+60-case matrix. Both execute in CPU emulation. The older extended POCKET+
+report describes a different campaign.
 
 This is a research implementation/archive, not flight-qualified software or a
 claim of conference acceptance. Research and packaging used AI assistance.

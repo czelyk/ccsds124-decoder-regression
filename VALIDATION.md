@@ -1,5 +1,9 @@
 # Packaging validation — 22 October 2026
 
+The 8 November follow-up executes the C codec and two receiver paths over
+13,440 frame exchanges in Cortex-M4 emulation. The [Venus Express replay](docs/venus-state-replay.md)
+describes the independent checksum checks and the recorded gap measurements.
+
 **Executed successfully in the curated working copy:** 4 independent ARM builds, 8 reception configurations; all no-loss controls passed and the fixed known counterexample reproduced.
 
 Unicorn CPU emulation. A green test reproduces a known discrepancy; it is not a decoder fix or a flight-reliability result.
