@@ -1,0 +1,7 @@
+{
+  "name": "ccsds124-decoder-regression",
+  "title": "CCSDS 124 Checked-Decoder Regression",
+  "scope": "Fixed packet-loss counterexample executed as ARM code in Unicorn",
+  "runner": "verify_counterexample.py",
+  "result_file": "results.json"
+}

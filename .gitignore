@@ -1,0 +1,17 @@
+.deps/
+.venv/
+runs/
+outputs/
+build/
+downloads/
+vendor/
+tools/go/
+tools/go_path/
+tools/go_cache/
+tools/go_tmp/
+__pycache__/
+*.pyc
+*.elf
+*.class
+*.jar
+.DS_Store

@@ -1,0 +1,6 @@
+* text=auto eol=lf
+evidence/** -text
+data/** -text
+provenance/** -text
+*.bin -text
+*.zip -text

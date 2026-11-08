@@ -1,0 +1,22 @@
+[
+  {
+    "target": ".deps/ccsds124/include/ccsds124.h",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/implementations/c/include/ccsds124.h",
+    "sha256": "4630ef1b09857d71d4135b76ea0b9ae7e9b6e8dac17c1e30f28e360d5dd0f78b"
+  },
+  {
+    "target": ".deps/ccsds124/src/decompress.c",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/implementations/c/src/decompress.c",
+    "sha256": "727a4f49a7cf189d7ae6d26a9c074ae3331415276b03a9dbd58ae18b291df043"
+  },
+  {
+    "target": ".deps/ccsds124/src/bitvector.c",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/implementations/c/src/bitvector.c",
+    "sha256": "e3ec782ec2d410663ab10a16bcd8abbc7d3582245c5c06c0d0b7751d24ea5933"
+  },
+  {
+    "target": ".deps/ccsds124/LICENSE",
+    "url": "https://raw.githubusercontent.com/tanagraspace/ccsds124/a049cfeec1900414be5b9fc0c18c49436cbb3c82/LICENSE",
+    "sha256": "2f9a977ca7c86fd4f7d4dda4621723409fc7f73d8fdbf4aad7d34f0529e76121"
+  }
+]

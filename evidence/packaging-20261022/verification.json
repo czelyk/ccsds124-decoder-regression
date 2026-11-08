@@ -1,0 +1,11 @@
+{
+  "pass": true,
+  "kind": "Fixed packet-loss counterexample executed as ARM code in Unicorn",
+  "packaged_files_verified": 20,
+  "independent_builds": 4,
+  "reception_configurations": 8,
+  "known_false_guarantee_reproduced": true,
+  "no_loss_controls_passed": true,
+  "physical_measurements": false,
+  "run_directory": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0"
+}

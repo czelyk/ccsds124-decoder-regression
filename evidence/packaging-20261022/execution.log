@@ -1,0 +1,7 @@
+{
+  "independent_builds": 4,
+  "reception_configurations": 8,
+  "no_loss_controls_passed": true,
+  "false_accuracy_guarantee_reproduced": true,
+  "lost_packet_notify_called": true
+}

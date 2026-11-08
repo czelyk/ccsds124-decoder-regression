@@ -1,0 +1,65 @@
+[
+  {
+    "source": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\packaging_work_20261022\\lab.py",
+    "destination": "ccsds124-decoder-regression\\tools\\lab.py",
+    "original_sha256": "1b45a75434723d108fad04c55557cd8f7179902c28b24f77db6993a70f950a22",
+    "curated_sha256": "1b45a75434723d108fad04c55557cd8f7179902c28b24f77db6993a70f950a22",
+    "transformation": "LF normalization"
+  },
+  {
+    "source": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\packaging_work_20261022\\run_arm.py",
+    "destination": "ccsds124-decoder-regression\\tests\\run.py",
+    "original_sha256": "887c00608416a9a79002f6690e1fb709f79bd1762066d5f556e4a08a50b97032",
+    "curated_sha256": "887c00608416a9a79002f6690e1fb709f79bd1762066d5f556e4a08a50b97032",
+    "transformation": "LF normalization"
+  },
+  {
+    "source": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\pilot_telemetry_independent\\verify_counterexample.py",
+    "destination": "ccsds124-decoder-regression\\src\\verify_counterexample.py",
+    "original_sha256": "71f44ed5290d954185088323633596981f77ae8a0d8c7546503897e623de839e",
+    "curated_sha256": "0b19fd53607fb50b5585008e06c30ff7bf1e871411fca1287471b399996b6098",
+    "transformation": "Documented packaging portability changes; archived source untouched"
+  },
+  {
+    "source": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\pilot_telemetry_independent\\independent_wrapper.c",
+    "destination": "ccsds124-decoder-regression\\src\\independent_wrapper.c",
+    "original_sha256": "0d5951a4dd668d1f44426a55bf69c72503a30b74cd157cde1275aefad69d5a54",
+    "curated_sha256": "0d5951a4dd668d1f44426a55bf69c72503a30b74cd157cde1275aefad69d5a54",
+    "transformation": "LF normalization"
+  },
+  {
+    "source": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\pilot_telemetry_independent\\link.ld",
+    "destination": "ccsds124-decoder-regression\\src\\link.ld",
+    "original_sha256": "4b0ebf8a47e0e620e46c1f85b96b47dde4f60b6fc6f91a402aaf5dc8fe435f5f",
+    "curated_sha256": "4b0ebf8a47e0e620e46c1f85b96b47dde4f60b6fc6f91a402aaf5dc8fe435f5f",
+    "transformation": "LF normalization"
+  },
+  {
+    "source": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\packaging_work_20261022\\bootstrap.py",
+    "destination": "ccsds124-decoder-regression\\tools\\bootstrap.py",
+    "original_sha256": "36cab15f888f06432d2e41f9cf4aa4a0f3d1023dee2352a8c13ae4353d262412",
+    "curated_sha256": "36cab15f888f06432d2e41f9cf4aa4a0f3d1023dee2352a8c13ae4353d262412",
+    "transformation": "LF normalization"
+  },
+  {
+    "source": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\pilot_telemetry_independent\\results.json",
+    "destination": "ccsds124-decoder-regression\\evidence\\recorded\\results.json",
+    "original_sha256": "d2a22e78669b6fe9944eefc42182c9fd6112d79a82e6a1d82fcbbd63f4933397",
+    "curated_sha256": "d2a22e78669b6fe9944eefc42182c9fd6112d79a82e6a1d82fcbbd63f4933397",
+    "transformation": "exact bytes"
+  },
+  {
+    "source": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\pilot_telemetry_independent\\README.md",
+    "destination": "ccsds124-decoder-regression\\docs\\original-research.md",
+    "original_sha256": "4f9dbef57b4b9c4b8ae1dc40dbd0e93f2fabc3bec259e8a4a6baa3129525bbae",
+    "curated_sha256": "4f9dbef57b4b9c4b8ae1dc40dbd0e93f2fabc3bec259e8a4a6baa3129525bbae",
+    "transformation": "exact bytes"
+  },
+  {
+    "source": "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\pilot_telemetry\\vendor_c\\LICENSE",
+    "destination": "ccsds124-decoder-regression\\THIRD_PARTY_LICENSES\\ccsds124-MIT.txt",
+    "original_sha256": "2f9a977ca7c86fd4f7d4dda4621723409fc7f73d8fdbf4aad7d34f0529e76121",
+    "curated_sha256": "2f9a977ca7c86fd4f7d4dda4621723409fc7f73d8fdbf4aad7d34f0529e76121",
+    "transformation": "exact bytes"
+  }
+]

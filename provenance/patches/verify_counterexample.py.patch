@@ -1,0 +1,32 @@
+--- original/verify_counterexample.py
++++ portable/verify_counterexample.py
+@@ -2,16 +2,16 @@
+ Uses a separate wrapper, ELF and hardcoded wire stream; no producer oracle enters C.
+ CPU emulation only. Instruction counts are not hardware timing.
+ """
+-import sys,json,hashlib,subprocess,struct
++import sys,json,hashlib,subprocess,struct,os
+ from pathlib import Path
+ D=Path(__file__).resolve().parent
+ ROOT=D.parent
+-sys.path.insert(0,str(ROOT/'pilot_freshness_c'/'runtime'))
++# Dependencies are installed in the selected Python environment.
+ from unicorn import Uc,UC_ARCH_ARM,UC_MODE_THUMB,UC_MODE_MCLASS
+ from unicorn.arm_const import UC_ARM_REG_SP,UC_ARM_REG_LR,UC_ARM_REG_R0,UC_ARM_REG_PC
+ from elftools.elf.elffile import ELFFile
+-GCC=Path('C:/Users/Ahmet/AppData/Local/Programs/ArmGNUToolchain/bin/arm-none-eabi-gcc.exe')
+-V=ROOT/'pilot_telemetry'/'vendor_c'
++GCC=Path(os.environ['ARM_GCC'])
++V=Path(os.environ['CCSDS124_SOURCE'])
+ WIRES=[bytes.fromhex('81bd9800000000000000000000000000'),bytes.fromhex('ebf0b0'),bytes.fromhex('83')]
+ VALID_BITS=[126,20,8]
+ ORIGINALS=[bytes(13),bytes([1])+bytes(12),bytes([1])+bytes(12)]
+@@ -49,7 +49,7 @@
+ def main():
+     results={'scope':'compiled Cortex-M4 C executed in Unicorn CPU emulation; no physical peripherals/timing/flight claim','wire_hex':[w.hex() for w in WIRES],'vendor_hashes':{},'cases':[]}
+     for p in [V/'include'/'ccsds124.h',V/'src'/'decompress.c',V/'src'/'bitvector.c']:
+-        results['vendor_hashes'][str(p.relative_to(ROOT))]=hashlib.sha256(p.read_bytes()).hexdigest()
++        results['vendor_hashes'][str(p.relative_to(V))]=hashlib.sha256(p.read_bytes()).hexdigest()
+     for opt in ['-O0','-O2']:
+         for maximum in [104,2048]:
+             elf=D/(opt[1:]+'_'+str(maximum)+'.elf')

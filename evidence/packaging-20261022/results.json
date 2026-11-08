@@ -1,0 +1,799 @@
+{
+  "scope": "compiled Cortex-M4 C executed in Unicorn CPU emulation; no physical peripherals/timing/flight claim",
+  "wire_hex": [
+    "81bd9800000000000000000000000000",
+    "ebf0b0",
+    "83"
+  ],
+  "vendor_hashes": {
+    "include\\ccsds124.h": "4630ef1b09857d71d4135b76ea0b9ae7e9b6e8dac17c1e30f28e360d5dd0f78b",
+    "src\\decompress.c": "727a4f49a7cf189d7ae6d26a9c074ae3331415276b03a9dbd58ae18b291df043",
+    "src\\bitvector.c": "e3ec782ec2d410663ab10a16bcd8abbc7d3582245c5c06c0d0b7751d24ea5933"
+  },
+  "cases": [
+    {
+      "optimization": "-O0",
+      "maximum_packet_bits": 104,
+      "exact_valid_bits": false,
+      "command": [
+        "C:\\Users\\Ahmet\\AppData\\Local\\Programs\\ArmGNUToolchain\\bin\\arm-none-eabi-gcc.exe",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O0",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=104",
+        "-IC:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\include",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\independent_wrapper.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\bitvector.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\decompress.c",
+        "-T",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\link.ld",
+        "-lgcc",
+        "-o",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\O0_104.elf"
+      ],
+      "elf_sha256": "1125b8d3c6cfdba10ab6fb56cd12d485ed44f3ada3b471f928569b951ce8d38b",
+      "no_loss": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "index": 1,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        }
+      ],
+      "one_known_erasure": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "index": 1,
+          "erased": true
+        },
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": false
+        }
+      ]
+    },
+    {
+      "optimization": "-O0",
+      "maximum_packet_bits": 104,
+      "exact_valid_bits": true,
+      "command": [
+        "C:\\Users\\Ahmet\\AppData\\Local\\Programs\\ArmGNUToolchain\\bin\\arm-none-eabi-gcc.exe",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O0",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=104",
+        "-IC:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\include",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\independent_wrapper.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\bitvector.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\decompress.c",
+        "-T",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\link.ld",
+        "-lgcc",
+        "-o",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\O0_104.elf"
+      ],
+      "elf_sha256": "1125b8d3c6cfdba10ab6fb56cd12d485ed44f3ada3b471f928569b951ce8d38b",
+      "no_loss": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "index": 1,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        }
+      ],
+      "one_known_erasure": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "index": 1,
+          "erased": true
+        },
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": false
+        }
+      ]
+    },
+    {
+      "optimization": "-O0",
+      "maximum_packet_bits": 2048,
+      "exact_valid_bits": false,
+      "command": [
+        "C:\\Users\\Ahmet\\AppData\\Local\\Programs\\ArmGNUToolchain\\bin\\arm-none-eabi-gcc.exe",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O0",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=2048",
+        "-IC:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\include",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\independent_wrapper.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\bitvector.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\decompress.c",
+        "-T",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\link.ld",
+        "-lgcc",
+        "-o",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\O0_2048.elf"
+      ],
+      "elf_sha256": "b80e1e8474298d49191d8d522efa04bdbb849a2bf6cbbef08b6876b7c5b88849",
+      "no_loss": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "index": 1,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        }
+      ],
+      "one_known_erasure": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "index": 1,
+          "erased": true
+        },
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": false
+        }
+      ]
+    },
+    {
+      "optimization": "-O0",
+      "maximum_packet_bits": 2048,
+      "exact_valid_bits": true,
+      "command": [
+        "C:\\Users\\Ahmet\\AppData\\Local\\Programs\\ArmGNUToolchain\\bin\\arm-none-eabi-gcc.exe",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O0",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=2048",
+        "-IC:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\include",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\independent_wrapper.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\bitvector.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\decompress.c",
+        "-T",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\link.ld",
+        "-lgcc",
+        "-o",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\O0_2048.elf"
+      ],
+      "elf_sha256": "b80e1e8474298d49191d8d522efa04bdbb849a2bf6cbbef08b6876b7c5b88849",
+      "no_loss": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "index": 1,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        }
+      ],
+      "one_known_erasure": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "index": 1,
+          "erased": true
+        },
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": false
+        }
+      ]
+    },
+    {
+      "optimization": "-O2",
+      "maximum_packet_bits": 104,
+      "exact_valid_bits": false,
+      "command": [
+        "C:\\Users\\Ahmet\\AppData\\Local\\Programs\\ArmGNUToolchain\\bin\\arm-none-eabi-gcc.exe",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=104",
+        "-IC:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\include",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\independent_wrapper.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\bitvector.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\decompress.c",
+        "-T",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\link.ld",
+        "-lgcc",
+        "-o",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\O2_104.elf"
+      ],
+      "elf_sha256": "96f46f013acf857b36d37efbc1700145c6687dcb8bc88893ca520f2c343376f5",
+      "no_loss": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "index": 1,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        }
+      ],
+      "one_known_erasure": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "index": 1,
+          "erased": true
+        },
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": false
+        }
+      ]
+    },
+    {
+      "optimization": "-O2",
+      "maximum_packet_bits": 104,
+      "exact_valid_bits": true,
+      "command": [
+        "C:\\Users\\Ahmet\\AppData\\Local\\Programs\\ArmGNUToolchain\\bin\\arm-none-eabi-gcc.exe",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=104",
+        "-IC:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\include",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\independent_wrapper.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\bitvector.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\decompress.c",
+        "-T",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\link.ld",
+        "-lgcc",
+        "-o",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\O2_104.elf"
+      ],
+      "elf_sha256": "96f46f013acf857b36d37efbc1700145c6687dcb8bc88893ca520f2c343376f5",
+      "no_loss": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "index": 1,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        }
+      ],
+      "one_known_erasure": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "index": 1,
+          "erased": true
+        },
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": false
+        }
+      ]
+    },
+    {
+      "optimization": "-O2",
+      "maximum_packet_bits": 2048,
+      "exact_valid_bits": false,
+      "command": [
+        "C:\\Users\\Ahmet\\AppData\\Local\\Programs\\ArmGNUToolchain\\bin\\arm-none-eabi-gcc.exe",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=2048",
+        "-IC:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\include",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\independent_wrapper.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\bitvector.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\decompress.c",
+        "-T",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\link.ld",
+        "-lgcc",
+        "-o",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\O2_2048.elf"
+      ],
+      "elf_sha256": "0b5cb2ae56d735672a42cb2b18f5971ca00ad33c7b9294c2184c3872d6be07c1",
+      "no_loss": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "index": 1,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        }
+      ],
+      "one_known_erasure": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "index": 1,
+          "erased": true
+        },
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": false
+        }
+      ]
+    },
+    {
+      "optimization": "-O2",
+      "maximum_packet_bits": 2048,
+      "exact_valid_bits": true,
+      "command": [
+        "C:\\Users\\Ahmet\\AppData\\Local\\Programs\\ArmGNUToolchain\\bin\\arm-none-eabi-gcc.exe",
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=2048",
+        "-IC:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\include",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\independent_wrapper.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\bitvector.c",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\.deps\\ccsds124\\src\\decompress.c",
+        "-T",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\link.ld",
+        "-lgcc",
+        "-o",
+        "C:\\Users\\Ahmet\\Documents\\Codex\\2026-10-13\\iac-2027-konu-arastirmasi\\automation\\iterative_20261018\\github_ready_20261022\\ccsds124-decoder-regression\\runs\\20261022T190922Z_test_46ccc0\\work\\O2_2048.elf"
+      ],
+      "elf_sha256": "0b5cb2ae56d735672a42cb2b18f5971ca00ad33c7b9294c2184c3872d6be07c1",
+      "no_loss": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            1,
+            0,
+            0
+          ],
+          "index": 1,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        },
+        {
+          "rc": 0,
+          "output": "01000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": true
+        }
+      ],
+      "one_known_erasure": [
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "index": 0,
+          "expected": "00000000000000000000000000",
+          "matches": true
+        },
+        {
+          "index": 1,
+          "erased": true
+        },
+        {
+          "rc": 0,
+          "output": "00000000000000000000000000",
+          "flags": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "index": 2,
+          "expected": "01000000000000000000000000",
+          "matches": false
+        }
+      ]
+    }
+  ]
+}
