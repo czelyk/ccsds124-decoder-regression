@@ -1,0 +1,230 @@
+{
+  "compiler": "arm-none-eabi-gcc.exe (Arm GNU Toolchain 15.2.Rel1 (Build arm-15.86)) 15.2.1 20251203",
+  "unicorn": "2.1.4",
+  "dataset_sha256": "96fe8cdf2b862911bf3499c699dee1b58a080205e3e892d2c66a44082dae72c1",
+  "baseline_cases_sha256": "1f0f89bb6dbb5ac1b87e211257b40e76afc94dd415cf6d9e04d32be757f0c101",
+  "packets_csv_sha256": "16d9b28339b833846fd0dc1b701d6350bb8d3bcfcc3571cea009c618b8be76a6",
+  "verify_wire_sha256": "a95fb32ee0634e6d5416914caaae7f90f354ad89a486a5897695c0cddefbccb1",
+  "physical_measurements": false,
+  "replayed_cases": 108,
+  "profiled_packets": 2784,
+  "linked_sections": {
+    "periodic": {
+      "flags": [
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-std=c99",
+        "-fwrapv",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=720"
+      ],
+      ".text": 11656,
+      ".data": 0,
+      ".bss": 6802
+    },
+    "verify_copy": {
+      "flags": [
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-std=c99",
+        "-fwrapv",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=720",
+        "-DVENUS_LOCAL_VERIFY"
+      ],
+      ".text": 12080,
+      ".data": 0,
+      ".bss": 10642
+    },
+    "verify_swap": {
+      "flags": [
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-std=c99",
+        "-fwrapv",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=720",
+        "-DVENUS_LOCAL_VERIFY",
+        "-DVENUS_VERIFY_SWAP"
+      ],
+      ".text": 12080,
+      ".data": 0,
+      ".bss": 10650
+    },
+    "verify_swap_fixed": {
+      "flags": [
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-std=c99",
+        "-fwrapv",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=720",
+        "-DVENUS_LOCAL_VERIFY",
+        "-DVENUS_VERIFY_SWAP",
+        "-DVENUS_VERIFY_FIXED_COPY"
+      ],
+      ".text": 12112,
+      ".data": 0,
+      ".bss": 10650
+    }
+  },
+  "instruction_profiles": {
+    "periodic": {
+      "clean_delta": {
+        "count": 609,
+        "min_instructions": 25573,
+        "p50_instructions": 28913,
+        "p95_instructions": 34808,
+        "max_instructions": 46622,
+        "max_wire_bytes": 114
+      },
+      "clean_reference": {
+        "count": 63,
+        "min_instructions": 35924,
+        "p50_instructions": 43711,
+        "p95_instructions": 53412,
+        "max_instructions": 57205,
+        "max_wire_bytes": 246
+      },
+      "injected_sample_retry": {
+        "count": 0
+      },
+      "injected_sample_no_retry": {
+        "count": 24,
+        "min_instructions": 27149,
+        "p50_instructions": 29270,
+        "p95_instructions": 35108,
+        "max_instructions": 35177,
+        "max_wire_bytes": 55
+      }
+    },
+    "verify_copy": {
+      "clean_delta": {
+        "count": 624,
+        "min_instructions": 42752,
+        "p50_instructions": 48389,
+        "p95_instructions": 58857,
+        "max_instructions": 83476,
+        "max_wire_bytes": 114
+      },
+      "clean_reference": {
+        "count": 48,
+        "min_instructions": 81864,
+        "p50_instructions": 96450,
+        "p95_instructions": 128221,
+        "max_instructions": 137240,
+        "max_wire_bytes": 246
+      },
+      "injected_sample_retry": {
+        "count": 22,
+        "min_instructions": 127007,
+        "p50_instructions": 138647,
+        "p95_instructions": 151091,
+        "max_instructions": 153665,
+        "max_wire_bytes": 154
+      },
+      "injected_sample_no_retry": {
+        "count": 2,
+        "min_instructions": 48735,
+        "p50_instructions": 48735,
+        "p95_instructions": 56879,
+        "max_instructions": 56879,
+        "max_wire_bytes": 52
+      }
+    },
+    "verify_swap": {
+      "clean_delta": {
+        "count": 624,
+        "min_instructions": 43628,
+        "p50_instructions": 49265,
+        "p95_instructions": 59733,
+        "max_instructions": 84352,
+        "max_wire_bytes": 114
+      },
+      "clean_reference": {
+        "count": 48,
+        "min_instructions": 82740,
+        "p50_instructions": 97326,
+        "p95_instructions": 129097,
+        "max_instructions": 138116,
+        "max_wire_bytes": 246
+      },
+      "injected_sample_retry": {
+        "count": 22,
+        "min_instructions": 129195,
+        "p50_instructions": 140835,
+        "p95_instructions": 153279,
+        "max_instructions": 155853,
+        "max_wire_bytes": 154
+      },
+      "injected_sample_no_retry": {
+        "count": 2,
+        "min_instructions": 49611,
+        "p50_instructions": 49611,
+        "p95_instructions": 57755,
+        "max_instructions": 57755,
+        "max_wire_bytes": 52
+      }
+    },
+    "verify_swap_fixed": {
+      "clean_delta": {
+        "count": 624,
+        "min_instructions": 42319,
+        "p50_instructions": 47957,
+        "p95_instructions": 58424,
+        "max_instructions": 83044,
+        "max_wire_bytes": 114
+      },
+      "clean_reference": {
+        "count": 48,
+        "min_instructions": 81432,
+        "p50_instructions": 96018,
+        "p95_instructions": 127789,
+        "max_instructions": 136808,
+        "max_wire_bytes": 246
+      },
+      "injected_sample_retry": {
+        "count": 22,
+        "min_instructions": 126579,
+        "p50_instructions": 138217,
+        "p95_instructions": 150661,
+        "max_instructions": 153235,
+        "max_wire_bytes": 154
+      },
+      "injected_sample_no_retry": {
+        "count": 2,
+        "min_instructions": 48303,
+        "p50_instructions": 48303,
+        "p95_instructions": 56446,
+        "max_instructions": 56446,
+        "max_wire_bytes": 52
+      }
+    }
+  },
+  "swap_savings": {
+    "verify_swap": {
+      "min_instructions_saved": -2188,
+      "max_instructions_saved": -876,
+      "min_retry_instructions_saved": -2188,
+      "max_retry_instructions_saved": -2188
+    },
+    "verify_swap_fixed": {
+      "min_instructions_saved": 428,
+      "max_instructions_saved": 433,
+      "min_retry_instructions_saved": 428,
+      "max_retry_instructions_saved": 430
+    }
+  }
+}

@@ -23,7 +23,12 @@ static uint32_t mask_seal;
 #ifdef VENUS_LOCAL_VERIFY
 uint32_t local_verify_enabled, local_attempts, local_retry;
 static ccsds124_compressor_t sender_checkpoint;
+#ifdef VENUS_VERIFY_SWAP
+static ccsds124_decompressor_t local_states[2];
+static unsigned local_active;
+#else
 static ccsds124_decompressor_t local_receiver, local_trial;
+#endif
 static bitvector_t local_decoded;
 static uint8_t local_bytes[PACKET_BYTES];
 #endif
@@ -101,13 +106,35 @@ static int verify_wire(void)
     bitreader_t reader;
     ++local_attempts;
     bitreader_init(&reader, wire_bytes, encoded_bits);
-    memcpy(&local_trial, &local_receiver, sizeof(local_trial));
-    if (ccsds124_decompress_packet(&local_trial, &reader, &local_decoded) != CCSDS124_OK ||
+#ifdef VENUS_VERIFY_SWAP
+    ccsds124_decompressor_t *trial = &local_states[local_active ^ 1u];
+#ifndef VENUS_VERIFY_FIXED_COPY
+    ccsds124_decompressor_t *committed = &local_states[local_active];
+#endif
+#else
+    ccsds124_decompressor_t *committed = &local_receiver;
+    ccsds124_decompressor_t *trial = &local_trial;
+#endif
+#ifdef VENUS_VERIFY_FIXED_COPY
+    /* Keep both addresses visible to the compiler in each copy. */
+    if (local_active)
+        memcpy(&local_states[0], &local_states[1], sizeof(*trial));
+    else
+        memcpy(&local_states[1], &local_states[0], sizeof(*trial));
+#else
+    memcpy(trial, committed, sizeof(*trial));
+#endif
+    if (ccsds124_decompress_packet(trial, &reader, &local_decoded) != CCSDS124_OK ||
         bitreader_remaining(&reader) != 0 ||
         bitvector_to_bytes(&local_decoded, local_bytes, PACKET_BYTES) != CCSDS124_OK ||
         memcmp(local_bytes, input_bytes, PACKET_BYTES) != 0)
         return 0;
-    memcpy(&local_receiver, &local_trial, sizeof(local_receiver));
+#ifdef VENUS_VERIFY_SWAP
+    /* The trial is now committed. A failed trial never advances this index. */
+    local_active ^= 1u;
+#else
+    memcpy(committed, trial, sizeof(*committed));
+#endif
     return 1;
 }
 #endif
@@ -125,8 +152,14 @@ int initialize(void)
     if (protect_mask)
         mask_seal = mask_crc();
 #ifdef VENUS_LOCAL_VERIFY
+#ifdef VENUS_VERIFY_SWAP
+    local_active = 0;
+    ccsds124_decompressor_t *committed = &local_states[local_active];
+#else
+    ccsds124_decompressor_t *committed = &local_receiver;
+#endif
     if (local_verify_enabled &&
-        ccsds124_decompressor_init(&local_receiver, PACKET_BITS, NULL, ROBUSTNESS) != CCSDS124_OK)
+        ccsds124_decompressor_init(committed, PACKET_BITS, NULL, ROBUSTNESS) != CCSDS124_OK)
         return 2;
 #endif
     return bitvector_init(&input, PACKET_BITS);

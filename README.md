@@ -60,6 +60,17 @@ samples to zero across the tested fault cases. The linked fixture used
 .venv/Scripts/python tests/run_local_verify.py --check
 ```
 
+## Sender work and decoder state copies
+
+The follow-up profiles 2,784 packets across periodic transmission, the
+original verifier and two versions that swap decoder buffers. It checks
+the generated ARM instructions to explain the cost of the remaining
+copy. [Experiment and evidence](docs/sender-work.md)
+
+```powershell
+.venv/Scripts/python tests/run_sender_work.py --check
+```
+
 ## Scope
 
 The original test reproduces a fixed counterexample across four builds and

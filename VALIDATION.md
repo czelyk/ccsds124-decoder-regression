@@ -1,5 +1,9 @@
 # Packaging validation — 22 October 2026
 
+The sender work experiment compares four builds over 108 cases. The
+[method and limits](docs/sender-work.md) describe the packet-by-packet
+instruction profiles and the checks against earlier delivery and wire data.
+
 The sender-side verification follow-up executes 18,144 sample exchanges in
 Cortex-M4 emulation. It records verified delivery, serialized bytes, linked
 sections and sampled sender instruction counts. See the [method and limits](docs/local-verify.md)

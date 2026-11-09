@@ -1,0 +1,195 @@
+[verify_copy]
+00010000 <verify_wire>:
+   10000:	b510      	push	{r4, lr}
+   10002:	4c25      	ldr	r4, [pc, #148]	@ (10098 <verify_wire+0x98>)
+   10004:	e9d4 32da 	ldrd	r3, r2, [r4, #872]	@ 0x368
+   10008:	b084      	sub	sp, #16
+   1000a:	3301      	adds	r3, #1
+   1000c:	a801      	add	r0, sp, #4
+   1000e:	f504 715c 	add.w	r1, r4, #880	@ 0x370
+   10012:	f8c4 3368 	str.w	r3, [r4, #872]	@ 0x368
+   10016:	f000 fed9 	bl	10dcc <bitreader_init>
+   1001a:	4623      	mov	r3, r4
+   1001c:	f504 72d8 	add.w	r2, r4, #432	@ 0x1b0
+   10020:	f504 70da 	add.w	r0, r4, #436	@ 0x1b4
+   10024:	f852 1f04 	ldr.w	r1, [r2, #4]!
+   10028:	f843 1b04 	str.w	r1, [r3], #4
+   1002c:	4283      	cmp	r3, r0
+   1002e:	d1f9      	bne.n	10024 <verify_wire+0x24>
+   10030:	4a1a      	ldr	r2, [pc, #104]	@ (1009c <verify_wire+0x9c>)
+   10032:	a901      	add	r1, sp, #4
+   10034:	f2a2 70ac 	subw	r0, r2, #1964	@ 0x7ac
+   10038:	f001 fbc2 	bl	117c0 <ccsds124_decompress_packet>
+   1003c:	b110      	cbz	r0, 10044 <verify_wire+0x44>
+   1003e:	2000      	movs	r0, #0
+   10040:	b004      	add	sp, #16
+   10042:	bd10      	pop	{r4, pc}
+   10044:	a801      	add	r0, sp, #4
+   10046:	f000 ff13 	bl	10e70 <bitreader_remaining>
+   1004a:	2800      	cmp	r0, #0
+   1004c:	d1f7      	bne.n	1003e <verify_wire+0x3e>
+   1004e:	4914      	ldr	r1, [pc, #80]	@ (100a0 <verify_wire+0xa0>)
+   10050:	225a      	movs	r2, #90	@ 0x5a
+   10052:	f1a1 0064 	sub.w	r0, r1, #100	@ 0x64
+   10056:	f000 fe53 	bl	10d00 <bitvector_to_bytes>
+   1005a:	2800      	cmp	r0, #0
+   1005c:	d1ef      	bne.n	1003e <verify_wire+0x3e>
+   1005e:	4b10      	ldr	r3, [pc, #64]	@ (100a0 <verify_wire+0xa0>)
+   10060:	f103 0260 	add.w	r2, r3, #96	@ 0x60
+   10064:	f103 045a 	add.w	r4, r3, #90	@ 0x5a
+   10068:	7818      	ldrb	r0, [r3, #0]
+   1006a:	7811      	ldrb	r1, [r2, #0]
+   1006c:	4288      	cmp	r0, r1
+   1006e:	f103 0301 	add.w	r3, r3, #1
+   10072:	f102 0201 	add.w	r2, r2, #1
+   10076:	d1e2      	bne.n	1003e <verify_wire+0x3e>
+   10078:	42a3      	cmp	r3, r4
+   1007a:	d1f5      	bne.n	10068 <verify_wire+0x68>
+   1007c:	4a09      	ldr	r2, [pc, #36]	@ (100a4 <verify_wire+0xa4>)
+   1007e:	f502 73dc 	add.w	r3, r2, #440	@ 0x1b8
+   10082:	f502 705b 	add.w	r0, r2, #876	@ 0x36c
+   10086:	f852 1f04 	ldr.w	r1, [r2, #4]!
+   1008a:	f843 1b04 	str.w	r1, [r3], #4
+   1008e:	4283      	cmp	r3, r0
+   10090:	d1f9      	bne.n	10086 <verify_wire+0x86>
+   10092:	2001      	movs	r0, #1
+   10094:	b004      	add	sp, #16
+   10096:	bd10      	pop	{r4, pc}
+   10098:	00012f30 	.word	0x00012f30
+   1009c:	000136dc 	.word	0x000136dc
+   100a0:	00013740 	.word	0x00013740
+   100a4:	00012f2c 	.word	0x00012f2c
+
+[verify_swap]
+00010000 <verify_wire>:
+   10000:	b510      	push	{r4, lr}
+   10002:	4c26      	ldr	r4, [pc, #152]	@ (1009c <verify_wire+0x9c>)
+   10004:	e9d4 3200 	ldrd	r3, r2, [r4]
+   10008:	b084      	sub	sp, #16
+   1000a:	3301      	adds	r3, #1
+   1000c:	f104 0108 	add.w	r1, r4, #8
+   10010:	a801      	add	r0, sp, #4
+   10012:	6023      	str	r3, [r4, #0]
+   10014:	f000 feda 	bl	10dcc <bitreader_init>
+   10018:	f8d4 2444 	ldr.w	r2, [r4, #1092]	@ 0x444
+   1001c:	f44f 71da 	mov.w	r1, #436	@ 0x1b4
+   10020:	f504 6389 	add.w	r3, r4, #1096	@ 0x448
+   10024:	f082 0001 	eor.w	r0, r2, #1
+   10028:	fb01 3000 	mla	r0, r1, r0, r3
+   1002c:	fb01 3302 	mla	r3, r1, r2, r3
+   10030:	eb03 0c01 	add.w	ip, r3, r1
+   10034:	1e42      	subs	r2, r0, #1
+   10036:	f813 1b01 	ldrb.w	r1, [r3], #1
+   1003a:	f802 1f01 	strb.w	r1, [r2, #1]!
+   1003e:	4563      	cmp	r3, ip
+   10040:	d1f9      	bne.n	10036 <verify_wire+0x36>
+   10042:	4a17      	ldr	r2, [pc, #92]	@ (100a0 <verify_wire+0xa0>)
+   10044:	a901      	add	r1, sp, #4
+   10046:	f001 fbbb 	bl	117c0 <ccsds124_decompress_packet>
+   1004a:	b110      	cbz	r0, 10052 <verify_wire+0x52>
+   1004c:	2000      	movs	r0, #0
+   1004e:	b004      	add	sp, #16
+   10050:	bd10      	pop	{r4, pc}
+   10052:	a801      	add	r0, sp, #4
+   10054:	f000 ff0c 	bl	10e70 <bitreader_remaining>
+   10058:	2800      	cmp	r0, #0
+   1005a:	d1f7      	bne.n	1004c <verify_wire+0x4c>
+   1005c:	4911      	ldr	r1, [pc, #68]	@ (100a4 <verify_wire+0xa4>)
+   1005e:	225a      	movs	r2, #90	@ 0x5a
+   10060:	f1a1 0068 	sub.w	r0, r1, #104	@ 0x68
+   10064:	f000 fe4c 	bl	10d00 <bitvector_to_bytes>
+   10068:	2800      	cmp	r0, #0
+   1006a:	d1ef      	bne.n	1004c <verify_wire+0x4c>
+   1006c:	4b0d      	ldr	r3, [pc, #52]	@ (100a4 <verify_wire+0xa4>)
+   1006e:	f103 0260 	add.w	r2, r3, #96	@ 0x60
+   10072:	f103 0c5a 	add.w	ip, r3, #90	@ 0x5a
+   10076:	7818      	ldrb	r0, [r3, #0]
+   10078:	7811      	ldrb	r1, [r2, #0]
+   1007a:	4288      	cmp	r0, r1
+   1007c:	f103 0301 	add.w	r3, r3, #1
+   10080:	f102 0201 	add.w	r2, r2, #1
+   10084:	d1e2      	bne.n	1004c <verify_wire+0x4c>
+   10086:	459c      	cmp	ip, r3
+   10088:	d1f5      	bne.n	10076 <verify_wire+0x76>
+   1008a:	f8d4 3444 	ldr.w	r3, [r4, #1092]	@ 0x444
+   1008e:	2001      	movs	r0, #1
+   10090:	4043      	eors	r3, r0
+   10092:	f8c4 3444 	str.w	r3, [r4, #1092]	@ 0x444
+   10096:	b004      	add	sp, #16
+   10098:	bd10      	pop	{r4, pc}
+   1009a:	bf00      	nop
+   1009c:	00012f30 	.word	0x00012f30
+   100a0:	000136e0 	.word	0x000136e0
+   100a4:	00013748 	.word	0x00013748
+
+[verify_swap_fixed]
+00010000 <verify_wire>:
+   10000:	b510      	push	{r4, lr}
+   10002:	4c2c      	ldr	r4, [pc, #176]	@ (100b4 <verify_wire+0xb4>)
+   10004:	e9d4 32da 	ldrd	r3, r2, [r4, #872]	@ 0x368
+   10008:	b084      	sub	sp, #16
+   1000a:	3301      	adds	r3, #1
+   1000c:	a801      	add	r0, sp, #4
+   1000e:	f504 715c 	add.w	r1, r4, #880	@ 0x370
+   10012:	f8c4 3368 	str.w	r3, [r4, #872]	@ 0x368
+   10016:	f000 fee9 	bl	10dec <bitreader_init>
+   1001a:	f8d4 37ac 	ldr.w	r3, [r4, #1964]	@ 0x7ac
+   1001e:	f44f 72da 	mov.w	r2, #436	@ 0x1b4
+   10022:	f083 0001 	eor.w	r0, r3, #1
+   10026:	fb02 4000 	mla	r0, r2, r0, r4
+   1002a:	b17b      	cbz	r3, 1004c <verify_wire+0x4c>
+   1002c:	4623      	mov	r3, r4
+   1002e:	18a1      	adds	r1, r4, r2
+   10030:	f8d3 21b4 	ldr.w	r2, [r3, #436]	@ 0x1b4
+   10034:	f843 2b04 	str.w	r2, [r3], #4
+   10038:	428b      	cmp	r3, r1
+   1003a:	d1f9      	bne.n	10030 <verify_wire+0x30>
+   1003c:	4a1e      	ldr	r2, [pc, #120]	@ (100b8 <verify_wire+0xb8>)
+   1003e:	a901      	add	r1, sp, #4
+   10040:	f001 fbce 	bl	117e0 <ccsds124_decompress_packet>
+   10044:	b188      	cbz	r0, 1006a <verify_wire+0x6a>
+   10046:	2000      	movs	r0, #0
+   10048:	b004      	add	sp, #16
+   1004a:	bd10      	pop	{r4, pc}
+   1004c:	1f23      	subs	r3, r4, #4
+   1004e:	f504 71d8 	add.w	r1, r4, #432	@ 0x1b0
+   10052:	f853 2f04 	ldr.w	r2, [r3, #4]!
+   10056:	f8c3 21b4 	str.w	r2, [r3, #436]	@ 0x1b4
+   1005a:	4299      	cmp	r1, r3
+   1005c:	d1f9      	bne.n	10052 <verify_wire+0x52>
+   1005e:	4a16      	ldr	r2, [pc, #88]	@ (100b8 <verify_wire+0xb8>)
+   10060:	a901      	add	r1, sp, #4
+   10062:	f001 fbbd 	bl	117e0 <ccsds124_decompress_packet>
+   10066:	2800      	cmp	r0, #0
+   10068:	d1ed      	bne.n	10046 <verify_wire+0x46>
+   1006a:	a801      	add	r0, sp, #4
+   1006c:	f000 ff10 	bl	10e90 <bitreader_remaining>
+   10070:	2800      	cmp	r0, #0
+   10072:	d1e8      	bne.n	10046 <verify_wire+0x46>
+   10074:	4911      	ldr	r1, [pc, #68]	@ (100bc <verify_wire+0xbc>)
+   10076:	225a      	movs	r2, #90	@ 0x5a
+   10078:	f1a1 0068 	sub.w	r0, r1, #104	@ 0x68
+   1007c:	f000 fe50 	bl	10d20 <bitvector_to_bytes>
+   10080:	2800      	cmp	r0, #0
+   10082:	d1e0      	bne.n	10046 <verify_wire+0x46>
+   10084:	4b0d      	ldr	r3, [pc, #52]	@ (100bc <verify_wire+0xbc>)
+   10086:	f103 0260 	add.w	r2, r3, #96	@ 0x60
+   1008a:	f103 0c5a 	add.w	ip, r3, #90	@ 0x5a
+   1008e:	7818      	ldrb	r0, [r3, #0]
+   10090:	7811      	ldrb	r1, [r2, #0]
+   10092:	4288      	cmp	r0, r1
+   10094:	f103 0301 	add.w	r3, r3, #1
+   10098:	f102 0201 	add.w	r2, r2, #1
+   1009c:	d1d3      	bne.n	10046 <verify_wire+0x46>
+   1009e:	459c      	cmp	ip, r3
+   100a0:	d1f5      	bne.n	1008e <verify_wire+0x8e>
+   100a2:	f8d4 37ac 	ldr.w	r3, [r4, #1964]	@ 0x7ac
+   100a6:	2001      	movs	r0, #1
+   100a8:	4043      	eors	r3, r0
+   100aa:	f8c4 37ac 	str.w	r3, [r4, #1964]	@ 0x7ac
+   100ae:	b004      	add	sp, #16
+   100b0:	bd10      	pop	{r4, pc}
+   100b2:	bf00      	nop
+   100b4:	00012f50 	.word	0x00012f50
+   100b8:	00013700 	.word	0x00013700
+   100bc:	00013768 	.word	0x00013768

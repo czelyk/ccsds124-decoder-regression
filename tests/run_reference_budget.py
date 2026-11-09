@@ -37,7 +37,7 @@ def count_prepare(dut):
 
 
 def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, bit=0,
-           *, local_verify=None, instruction_counts=None):
+           *, local_verify=None, instruction_counts=None, profile_rows=None):
     for name, value in (('reference_period', period), ('inject_at', fault), ('inject_bit', bit),
                         ('protect_mask', int(guarded)), ('inject_after_check', int(phase == 'after_check'))):
         set_word(dut, name, value)
@@ -53,7 +53,8 @@ def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, 
     digest = hashlib.sha256()
     for index, packet in enumerate(packets):
         dut.u.mem_write(dut.names['input_bytes'], packet)
-        if instruction_counts is not None and index in instruction_counts:
+        measured = instruction_counts is not None and index in instruction_counts
+        if measured:
             rc, instruction_counts[index] = count_prepare(dut)
         else:
             rc = dut.call('exchange')
@@ -66,6 +67,14 @@ def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, 
                     raise RuntimeError('Unexpected local retry or retry without a full reference')
                 retries.append(index)
         size = read_word(dut, 'encoded_bytes') + 4
+        if profile_rows is not None and measured:
+            profile_rows.append({
+                'sample': index,
+                'instructions': instruction_counts[index],
+                'wire_bytes': size,
+                'reference': read_word(dut, 'reference_sent'),
+                'retry': int(bool(retries and retries[-1] == index)),
+            })
         bits = read_word(dut, 'encoded_bits')
         wire = bytes(dut.u.mem_read(dut.names['wire_bytes'], size))
         tag = int.from_bytes(wire[-4:], 'little')
