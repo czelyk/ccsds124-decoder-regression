@@ -48,6 +48,18 @@ best feasible periodic setting.
 .venv/Scripts/python tests/run_reference_budget.py --check
 ```
 
+## Sender-side decode verification
+
+A local decode compares each compressed payload with its source before
+release and retries with a full reference on a mismatch. Under the same
+serialized-byte ceiling as periodic K=12, the longest gap fell from 11
+samples to zero across the tested fault cases. The linked fixture used
+3,840 bytes more static RAM. [Experiment and evidence](docs/local-verify.md)
+
+```powershell
+.venv/Scripts/python tests/run_local_verify.py --check
+```
+
 ## Scope
 
 The original test reproduces a fixed counterexample across four builds and

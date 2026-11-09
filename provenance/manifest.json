@@ -18,8 +18,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 2873,
-      "sha256": "fa9c303857abadcc1fe2c939813a1e0f748832ff5a09d1e53e433ecc2eb1555f"
+      "bytes": 3346,
+      "sha256": "a3c053af22f0429064956cbd51b1b10fac3732cff2ac2d93114f6fbb1921567f"
     },
     {
       "path": "THIRD_PARTY_LICENSES/ccsds124-MIT.txt",
@@ -33,13 +33,18 @@
     },
     {
       "path": "VALIDATION.md",
-      "bytes": 1754,
-      "sha256": "24ab47015a4e46b1da69c39ad3a9dc8454b2dfc6e86c620ec8b3cebed7402681"
+      "bytes": 2069,
+      "sha256": "cd8cfe7e0d1bc9d776aa95806214c76a135d642d6fdd42d81c478407174b6963"
     },
     {
       "path": "dependencies.lock.json",
       "bytes": 1109,
       "sha256": "8b348c6b72dac23bf9d93d16c3b68fcb8b5c6e7cae2fed8a285cc64921b7aded"
+    },
+    {
+      "path": "docs/local-verify.md",
+      "bytes": 4500,
+      "sha256": "300c4747fb29a0cd8f5d2495345ebe3ac56199ed6dc3b517180a9ab010120261"
     },
     {
       "path": "docs/original-research.md",
@@ -55,6 +60,16 @@
       "path": "docs/venus-state-replay.md",
       "bytes": 5047,
       "sha256": "961a6e97fa41242003cb2d38ba521de3fc6b24e59069a85bc53de8ef8517404e"
+    },
+    {
+      "path": "evidence/local-verify/cases.csv",
+      "bytes": 10153,
+      "sha256": "1f0f89bb6dbb5ac1b87e211257b40e76afc94dd415cf6d9e04d32be757f0c101"
+    },
+    {
+      "path": "evidence/local-verify/summary.json",
+      "bytes": 4709,
+      "sha256": "3fea26ba6abca65d7e6262a03c926196156742a1922d9fe5fb5897187f86d350"
     },
     {
       "path": "evidence/packaging-20261022/execution.log",
@@ -133,8 +148,8 @@
     },
     {
       "path": "src/venus_state.c",
-      "bytes": 5441,
-      "sha256": "4f62fca83d1965db0bf61a821143184bd7c2b24ad5497a57e503c15c8318400b"
+      "bytes": 7658,
+      "sha256": "1ab5eda7a22493ac9abda1e36acc7ac58b06fbb00b9be5708d90f7dfa3ce77c7"
     },
     {
       "path": "src/verify_counterexample.py",
@@ -147,14 +162,19 @@
       "sha256": "887c00608416a9a79002f6690e1fb709f79bd1762066d5f556e4a08a50b97032"
     },
     {
+      "path": "tests/run_local_verify.py",
+      "bytes": 7830,
+      "sha256": "26a6c79e5928684c8274407be4fe18146f3d9d203e85d49c40898c500432e9a0"
+    },
+    {
       "path": "tests/run_reference_budget.py",
-      "bytes": 9253,
-      "sha256": "2691c49c4ad05334a8417079c2838a7ec26e0d715e57de4f6032a32c60822dc5"
+      "bytes": 10716,
+      "sha256": "0f956024e5ce248665b20be410bb7fa3c88cbebe4ee296e111e9903dece894ae"
     },
     {
       "path": "tests/run_venus.py",
-      "bytes": 10785,
-      "sha256": "faad20d01b1cbe2f1ef4097d0af1d672997070ae2e3515802aaad5c805d92dfe"
+      "bytes": 10818,
+      "sha256": "6983c75db84f7410a52ce2bdd1af7e6ece09a2ef2cb48d6a2180e1844df687d4"
     },
     {
       "path": "tools/bootstrap.py",

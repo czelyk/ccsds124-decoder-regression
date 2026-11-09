@@ -1,0 +1,198 @@
+{
+  "compiler": "arm-none-eabi-gcc.exe (Arm GNU Toolchain 15.2.Rel1 (Build arm-15.86)) 15.2.1 20251203",
+  "local_flags": [
+    "-mcpu=cortex-m4",
+    "-mthumb",
+    "-O2",
+    "-std=c99",
+    "-fwrapv",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-nostdlib",
+    "-DCCSDS124_MAX_PACKET_LENGTH=720",
+    "-DVENUS_LOCAL_VERIFY"
+  ],
+  "base_elf_sha256": "1486a7cd771fd0fa512bff1e275b09dd07d92b075307ac3c792b4f6fceec6709",
+  "local_elf_sha256": "b6c7143d9d84b789eb740e43d6b7f1261f13e9dcf07bdb39da7fdf4dbcd80485",
+  "dataset_sha256": "96fe8cdf2b862911bf3499c699dee1b58a080205e3e892d2c66a44082dae72c1",
+  "periodic_source_csv_sha256": "a422a38e71ed6e623b0941e0907790a6336dcb57d4ee5e048c5ead513700cbc8",
+  "cases_csv_sha256": "1f0f89bb6dbb5ac1b87e211257b40e76afc94dd415cf6d9e04d32be757f0c101",
+  "physical_measurements": false,
+  "cases": 81,
+  "frames": 18144,
+  "wrong_delivered": 0,
+  "by_slice": {
+    "0": {
+      "byte_ceiling": 13664,
+      "periodic_period": 12,
+      "periodic_worst_gap": 11,
+      "periodic_missing_samples": 23,
+      "periodic_max_bytes": 13273,
+      "local_verify": {
+        "16": {
+          "fits_ceiling": true,
+          "worst_gap": 0,
+          "missing_samples": 0,
+          "max_bytes": 12892,
+          "wrong_delivered": 0,
+          "retries": 6,
+          "cases_with_retry": 6,
+          "gap_cases_better_equal_worse": [
+            6,
+            2,
+            0
+          ]
+        },
+        "100": {
+          "fits_ceiling": true,
+          "worst_gap": 0,
+          "missing_samples": 0,
+          "max_bytes": 11827,
+          "wrong_delivered": 0,
+          "retries": 6,
+          "cases_with_retry": 6,
+          "gap_cases_better_equal_worse": [
+            6,
+            2,
+            0
+          ]
+        }
+      }
+    },
+    "75000": {
+      "byte_ceiling": 11410,
+      "periodic_period": 12,
+      "periodic_worst_gap": 11,
+      "periodic_missing_samples": 42,
+      "periodic_max_bytes": 11016,
+      "local_verify": {
+        "16": {
+          "fits_ceiling": true,
+          "worst_gap": 0,
+          "missing_samples": 0,
+          "max_bytes": 10613,
+          "wrong_delivered": 0,
+          "retries": 8,
+          "cases_with_retry": 8,
+          "gap_cases_better_equal_worse": [
+            8,
+            0,
+            0
+          ]
+        },
+        "100": {
+          "fits_ceiling": true,
+          "worst_gap": 0,
+          "missing_samples": 0,
+          "max_bytes": 9506,
+          "wrong_delivered": 0,
+          "retries": 8,
+          "cases_with_retry": 8,
+          "gap_cases_better_equal_worse": [
+            8,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "150176": {
+      "byte_ceiling": 12245,
+      "periodic_period": 12,
+      "periodic_worst_gap": 11,
+      "periodic_missing_samples": 37,
+      "periodic_max_bytes": 11854,
+      "local_verify": {
+        "16": {
+          "fits_ceiling": true,
+          "worst_gap": 0,
+          "missing_samples": 0,
+          "max_bytes": 11458,
+          "wrong_delivered": 0,
+          "retries": 8,
+          "cases_with_retry": 8,
+          "gap_cases_better_equal_worse": [
+            8,
+            0,
+            0
+          ]
+        },
+        "100": {
+          "fits_ceiling": true,
+          "worst_gap": 0,
+          "missing_samples": 0,
+          "max_bytes": 10376,
+          "wrong_delivered": 0,
+          "retries": 8,
+          "cases_with_retry": 8,
+          "gap_cases_better_equal_worse": [
+            8,
+            0,
+            0
+          ]
+        }
+      }
+    }
+  },
+  "linked_sections": {
+    "periodic": {
+      ".text": 11656,
+      ".data": 0,
+      ".bss": 6802
+    },
+    "local_verify": {
+      ".text": 12080,
+      ".data": 0,
+      ".bss": 10642
+    },
+    "delta": {
+      ".text": 424,
+      ".data": 0,
+      ".bss": 3840
+    }
+  },
+  "profile_slice": 0,
+  "profile_period": 16,
+  "profile_fault": [
+    101,
+    32
+  ],
+  "instruction_profiles": {
+    "periodic": {
+      "clean": {
+        "sender_instructions": {
+          "100": 32852,
+          "101": 31656,
+          "102": 32534
+        },
+        "retry_indices": ""
+      },
+      "late_fault": {
+        "sender_instructions": {
+          "100": 32852,
+          "101": 31728,
+          "102": 32574
+        },
+        "retry_indices": ""
+      }
+    },
+    "local_verify": {
+      "clean": {
+        "sender_instructions": {
+          "100": 55615,
+          "101": 54146,
+          "102": 55411
+        },
+        "retry_indices": ""
+      },
+      "late_fault": {
+        "sender_instructions": {
+          "100": 55615,
+          "101": 149139,
+          "102": 55490
+        },
+        "retry_indices": "101"
+      }
+    }
+  }
+}

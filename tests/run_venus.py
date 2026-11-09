@@ -127,7 +127,7 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
-def prepare_arm_run(label):
+def prepare_arm_run(label, *, extra_flags=()):
     deps = bootstrap()
     bootstrap(lock_name='venus.dependencies.lock.json')
     gcc = find_tool('arm-none-eabi-gcc', 'ARM_GCC')
@@ -139,7 +139,7 @@ def prepare_arm_run(label):
     from verify_counterexample import DUT
 
     flags = ['-mcpu=cortex-m4', '-mthumb', '-O2', '-std=c99', '-fwrapv',
-             '-ffreestanding', '-fno-builtin', '-nostdlib', '-DCCSDS124_MAX_PACKET_LENGTH=720']
+             '-ffreestanding', '-fno-builtin', '-nostdlib', '-DCCSDS124_MAX_PACKET_LENGTH=720', *extra_flags]
     elf = work / 'venus.elf'
     execute([gcc, *flags, '-I' + str(vendor / 'include'), work / 'venus_state.c',
              *(vendor / 'src' / (name + '.c') for name in COMPONENTS),

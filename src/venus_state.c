@@ -20,6 +20,14 @@ static bitbuffer_t packet;
 static uint32_t frame_index;
 static uint32_t mask_seal;
 
+#ifdef VENUS_LOCAL_VERIFY
+uint32_t local_verify_enabled, local_attempts, local_retry;
+static ccsds124_compressor_t sender_checkpoint;
+static ccsds124_decompressor_t local_receiver, local_trial;
+static bitvector_t local_decoded;
+static uint8_t local_bytes[PACKET_BYTES];
+#endif
+
 void *memcpy(void *dst, const void *src, size_t count)
 {
     uint8_t *out = dst;
@@ -77,6 +85,33 @@ static int evaluate(uint8_t *output, uint32_t *computed, uint32_t *accept, uint3
     return 0;
 }
 
+static int encode_wire(const ccsds124_params_t *params)
+{
+    bitbuffer_init(&packet);
+    if (ccsds124_compress_packet(&sender, &input, &packet, params) != CCSDS124_OK)
+        return 2;
+    encoded_bits = (uint32_t)bitbuffer_size(&packet);
+    encoded_bytes = (uint32_t)bitbuffer_to_bytes(&packet, wire_bytes, CCSDS124_MAX_OUTPUT_BYTES);
+    return encoded_bytes != 0 && encoded_bytes == (encoded_bits + 7u) / 8u ? 0 : 3;
+}
+
+#ifdef VENUS_LOCAL_VERIFY
+static int verify_wire(void)
+{
+    bitreader_t reader;
+    ++local_attempts;
+    bitreader_init(&reader, wire_bytes, encoded_bits);
+    memcpy(&local_trial, &local_receiver, sizeof(local_trial));
+    if (ccsds124_decompress_packet(&local_trial, &reader, &local_decoded) != CCSDS124_OK ||
+        bitreader_remaining(&reader) != 0 ||
+        bitvector_to_bytes(&local_decoded, local_bytes, PACKET_BYTES) != CCSDS124_OK ||
+        memcmp(local_bytes, input_bytes, PACKET_BYTES) != 0)
+        return 0;
+    memcpy(&local_receiver, &local_trial, sizeof(local_receiver));
+    return 1;
+}
+#endif
+
 int initialize(void)
 {
     if (reference_period == 0 || (inject_at != UINT32_MAX && inject_bit >= PACKET_BITS))
@@ -89,10 +124,15 @@ int initialize(void)
         return 2;
     if (protect_mask)
         mask_seal = mask_crc();
+#ifdef VENUS_LOCAL_VERIFY
+    if (local_verify_enabled &&
+        ccsds124_decompressor_init(&local_receiver, PACKET_BITS, NULL, ROBUSTNESS) != CCSDS124_OK)
+        return 2;
+#endif
     return bitvector_init(&input, PACKET_BITS);
 }
 
-int exchange(void)
+int prepare_packet(void)
 {
     if (bitvector_from_bytes(&input, input_bytes, PACKET_BYTES) != CCSDS124_OK)
         return 1;
@@ -105,22 +145,45 @@ int exchange(void)
 
     const uint8_t reference = frame_index <= ROBUSTNESS || frame_index % reference_period == 0 ||
                               forced_reference;
-    reference_sent = reference;
-    const ccsds124_params_t params = {ROBUSTNESS, frame_index % 20u == 0, reference, reference};
+    ccsds124_params_t params = {ROBUSTNESS, frame_index % 20u == 0, reference, reference};
 
-    bitbuffer_init(&packet);
-    if (ccsds124_compress_packet(&sender, &input, &packet, &params) != CCSDS124_OK)
-        return 2;
+#ifdef VENUS_LOCAL_VERIFY
+    local_attempts = 0;
+    local_retry = 0;
+    if (local_verify_enabled)
+        memcpy(&sender_checkpoint, &sender, sizeof(sender_checkpoint));
+#endif
+    const int encode_rc = encode_wire(&params);
+#ifdef VENUS_LOCAL_VERIFY
+    if (local_verify_enabled && (encode_rc != 0 || !verify_wire())) {
+        local_retry = 1;
+        /* The checkpoint already contains any injected persistent mask error.
+         * It restores the packet index and history, without healing the fault. */
+        memcpy(&sender, &sender_checkpoint, sizeof(sender));
+        params.send_mask_flag = 1;
+        params.uncompressed_flag = 1;
+        if (encode_wire(&params) != 0 || !verify_wire()) {
+            memcpy(&sender, &sender_checkpoint, sizeof(sender));
+            encoded_bits = 0;
+            encoded_bytes = 0;
+            return 6;
+        }
+    } else
+#endif
+    if (encode_rc != 0)
+        return encode_rc;
+
+    reference_sent = params.send_mask_flag;
     if (protect_mask)
         mask_seal = mask_crc();
     mask_bytes_checked = protect_mask ? 2u * (uint32_t)sizeof(sender.mask.data) : 0u;
-    encoded_bits = (uint32_t)bitbuffer_size(&packet);
-    encoded_bytes = (uint32_t)bitbuffer_to_bytes(&packet, wire_bytes, CCSDS124_MAX_OUTPUT_BYTES);
-    if (encoded_bytes == 0 || encoded_bytes != (encoded_bits + 7u) / 8u)
-        return 3;
     for (unsigned i = 0; i < CRC_BYTES; ++i)
         wire_bytes[encoded_bytes + i] = (uint8_t)(source_crc >> (8u * i));
+    return 0;
+}
 
+int receive_wire(void)
+{
     uint32_t received_crc = 0;
     for (unsigned i = 0; i < CRC_BYTES; ++i)
         received_crc |= (uint32_t)wire_bytes[encoded_bytes + i] << (8u * i);
@@ -150,4 +213,10 @@ int exchange(void)
     }
     ++frame_index;
     return 0;
+}
+
+int exchange(void)
+{
+    const int rc = prepare_packet();
+    return rc == 0 ? receive_wire() : rc;
 }

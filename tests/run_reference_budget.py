@@ -15,20 +15,56 @@ FAULTS = tuple((index, bit) for index in (23, 61, 101, 158) for bit in (32, 511)
 PHASES = ('before_check', 'after_check')
 
 
-def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, bit=0):
+def count_prepare(dut):
+    from unicorn import UC_HOOK_CODE
+
+    count = 0
+
+    def on_instruction(*_):
+        nonlocal count
+        count += 1
+
+    hook = dut.u.hook_add(UC_HOOK_CODE, on_instruction)
+    try:
+        dut.u.ctl_flush_tb()
+        rc = dut.call('prepare_packet')
+    finally:
+        dut.u.hook_del(hook)
+        dut.u.ctl_flush_tb()
+    if count == 0:
+        raise RuntimeError('Instruction counter observed no sender instructions')
+    return (dut.call('receive_wire') if rc == 0 else rc), count
+
+
+def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, bit=0,
+           *, local_verify=None, instruction_counts=None):
     for name, value in (('reference_period', period), ('inject_at', fault), ('inject_bit', bit),
                         ('protect_mask', int(guarded)), ('inject_after_check', int(phase == 'after_check'))):
         set_word(dut, name, value)
+    if 'local_verify_enabled' in dut.names:
+        set_word(dut, 'local_verify_enabled', int(bool(local_verify)))
     if dut.call('initialize') != 0:
         raise RuntimeError('Codec initialization failed')
 
     missing = current_gap = longest_gap = wrong_delivered = wire_bytes = references = mask_bytes = 0
     trigger_indices = []
+    retries = []
+    attempts = 0
     digest = hashlib.sha256()
     for index, packet in enumerate(packets):
         dut.u.mem_write(dut.names['input_bytes'], packet)
-        if dut.call('exchange') != 0:
+        if instruction_counts is not None and index in instruction_counts:
+            rc, instruction_counts[index] = count_prepare(dut)
+        else:
+            rc = dut.call('exchange')
+        if rc != 0:
             raise RuntimeError(f'C exchange failed at {start}+{index}, K={period}, phase={phase}')
+        if local_verify:
+            attempts += read_word(dut, 'local_attempts')
+            if read_word(dut, 'local_retry'):
+                if not read_word(dut, 'reference_sent') or index < fault:
+                    raise RuntimeError('Unexpected local retry or retry without a full reference')
+                retries.append(index)
         size = read_word(dut, 'encoded_bytes') + 4
         bits = read_word(dut, 'encoded_bits')
         wire = bytes(dut.u.mem_read(dut.names['wire_bytes'], size))
@@ -63,7 +99,7 @@ def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, 
     expected_triggers = [fault] if guarded and phase == 'before_check' else []
     if trigger_indices != expected_triggers:
         raise RuntimeError(f'Unexpected trigger indices: {trigger_indices}, wanted {expected_triggers}')
-    return {
+    record = {
         'slice_start': start, 'period': period, 'guarded': int(guarded), 'phase': phase,
         'fault_index': None if fault == NO_FAULT else fault, 'mask_bit': None if fault == NO_FAULT else bit,
         'flipped_from': None if fault == NO_FAULT else flipped, 'triggers': len(trigger_indices),
@@ -71,6 +107,10 @@ def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, 
         'longest_gap': longest_gap, 'wrong_delivered': wrong_delivered,
         'mask_bytes_checked': mask_bytes, 'wire_sha256': digest.hexdigest(),
     }
+    if local_verify is not None:
+        record.update(local_verify=int(local_verify), local_attempts=attempts, local_retries=len(retries),
+                      retry_indices=' '.join(map(str, retries)))
+    return record
 
 
 def score(rows):

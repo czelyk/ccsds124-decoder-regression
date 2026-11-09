@@ -1,5 +1,10 @@
 # Packaging validation — 22 October 2026
 
+The sender-side verification follow-up executes 18,144 sample exchanges in
+Cortex-M4 emulation. It records verified delivery, serialized bytes, linked
+sections and sampled sender instruction counts. See the [method and limits](docs/local-verify.md)
+and [recorded measurements](evidence/local-verify/summary.json).
+
 The 9 November follow-up compares periodic and fault-triggered references
 against a shared byte ceiling. See the [method and limits](docs/reference-budget.md)
 and [recorded measurements](evidence/reference-budget/summary.json).
