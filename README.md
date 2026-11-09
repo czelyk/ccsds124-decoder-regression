@@ -34,11 +34,25 @@ with checked decoding and nine with the basic path. [Experiment and evidence](do
 .venv/Scripts/python tests/run_venus.py --check
 ```
 
+## Full references under a shared byte ceiling
+
+The follow-up compares periodic references with an encoder that emits a
+reference on a local mask CRC mismatch. It tests faults on both sides of the
+CRC check and uses the same serialized byte ceiling for each alternative.
+Before-check flips produced no gap. After-check flips escaped detection,
+and the long fallback produced gaps up to 99 samples against 11 for the
+best feasible periodic setting.
+[Experiment and evidence](docs/reference-budget.md)
+
+```powershell
+.venv/Scripts/python tests/run_reference_budget.py --check
+```
+
 ## Scope
 
 The original test reproduces a fixed counterexample across four builds and
-eight reception configurations. The Venus Express replay is a separate
-60-case matrix. Both execute in CPU emulation. The older extended POCKET+
+eight reception configurations. The Venus Express experiments use separate
+fault matrices. All execute in CPU emulation. The older extended POCKET+
 report describes a different campaign.
 
 This is a research implementation/archive, not flight-qualified software or a

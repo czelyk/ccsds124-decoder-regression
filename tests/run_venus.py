@@ -127,14 +127,11 @@ def write_csv(path, rows):
         writer.writerows(rows)
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--check', action='store_true', help='Compare measurements with the recorded matrix')
-    args = parser.parse_args()
+def prepare_arm_run(label):
     deps = bootstrap()
     bootstrap(lock_name='venus.dependencies.lock.json')
     gcc = find_tool('arm-none-eabi-gcc', 'ARM_GCC')
-    run, work = new_run('venus')
+    run, work = new_run(label)
     vendor = deps / 'ccsds124'
     os.environ['ARM_GCC'] = str(gcc)
     os.environ['CCSDS124_SOURCE'] = str(vendor)
@@ -152,6 +149,14 @@ def main():
     data = (deps / 'data/venus-express.ccsds').read_bytes()
     if len(data) != 151_200 * PACKET_BYTES:
         raise RuntimeError('Unexpected Venus Express record size')
+    return run, gcc, flags, elf, dut, data
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--check', action='store_true', help='Compare measurements with the recorded matrix')
+    args = parser.parse_args()
+    run, gcc, flags, elf, dut, data = prepare_arm_run('venus')
     case_rows, frame_rows = [], []
     for start in STARTS:
         packets = [data[index * PACKET_BYTES:(index + 1) * PACKET_BYTES]

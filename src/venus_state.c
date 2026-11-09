@@ -8,6 +8,7 @@ uint32_t reference_period, inject_at, inject_bit;
 uint32_t encoded_bytes, encoded_bits, source_crc, decoded_crc, delivered;
 uint32_t flipped_from;
 uint32_t basic_crc, basic_delivered, reference_sent;
+uint32_t protect_mask, inject_after_check, forced_reference, mask_bytes_checked;
 int32_t decode_rc, basic_rc;
 uint8_t decode_status;
 
@@ -17,6 +18,7 @@ static ccsds124_decompressor_t basic_receiver, basic_trial;
 static bitvector_t input, decoded;
 static bitbuffer_t packet;
 static uint32_t frame_index;
+static uint32_t mask_seal;
 
 void *memcpy(void *dst, const void *src, size_t count)
 {
@@ -44,10 +46,10 @@ int memcmp(const void *left, const void *right, size_t count)
     return 0;
 }
 
-static uint32_t crc32(const uint8_t *data)
+static uint32_t crc32(const uint8_t *data, size_t length)
 {
     uint32_t crc = UINT32_MAX;
-    for (size_t i = 0; i < PACKET_BYTES; ++i) {
+    for (size_t i = 0; i < length; ++i) {
         crc ^= data[i];
         for (unsigned bit = 0; bit < 8u; ++bit)
             crc = (crc >> 1) ^ ((crc & 1u) ? UINT32_C(0xedb88320) : 0u);
@@ -55,11 +57,22 @@ static uint32_t crc32(const uint8_t *data)
     return ~crc;
 }
 
+static uint32_t mask_crc(void)
+{
+    return crc32((const uint8_t *)sender.mask.data, sizeof(sender.mask.data));
+}
+
+static void inject_mask_fault(void)
+{
+    flipped_from = (uint32_t)bitvector_get_bit(&sender.mask, inject_bit);
+    bitvector_set_bit(&sender.mask, inject_bit, !flipped_from);
+}
+
 static int evaluate(uint8_t *output, uint32_t *computed, uint32_t *accept, uint32_t tag)
 {
     if (bitvector_to_bytes(&decoded, output, PACKET_BYTES) != CCSDS124_OK)
         return 1;
-    *computed = crc32(output);
+    *computed = crc32(output, PACKET_BYTES);
     *accept = *computed == tag;
     return 0;
 }
@@ -74,25 +87,33 @@ int initialize(void)
         ccsds124_decompressor_init(&receiver, PACKET_BITS, NULL, ROBUSTNESS) != CCSDS124_OK ||
         ccsds124_decompressor_init(&basic_receiver, PACKET_BITS, NULL, ROBUSTNESS) != CCSDS124_OK)
         return 2;
+    if (protect_mask)
+        mask_seal = mask_crc();
     return bitvector_init(&input, PACKET_BITS);
 }
 
 int exchange(void)
 {
-    const uint8_t reference = frame_index <= ROBUSTNESS || frame_index % reference_period == 0;
-    reference_sent = reference;
-    const ccsds124_params_t params = {ROBUSTNESS, frame_index % 20u == 0, reference, reference};
     if (bitvector_from_bytes(&input, input_bytes, PACKET_BYTES) != CCSDS124_OK)
         return 1;
-    source_crc = crc32(input_bytes);
-    if (frame_index == inject_at) {
-        flipped_from = (uint32_t)bitvector_get_bit(&sender.mask, inject_bit);
-        bitvector_set_bit(&sender.mask, inject_bit, !flipped_from);
-    }
+    source_crc = crc32(input_bytes, PACKET_BYTES);
+    if (frame_index == inject_at && !inject_after_check)
+        inject_mask_fault();
+    forced_reference = protect_mask && mask_crc() != mask_seal;
+    if (frame_index == inject_at && inject_after_check)
+        inject_mask_fault();
+
+    const uint8_t reference = frame_index <= ROBUSTNESS || frame_index % reference_period == 0 ||
+                              forced_reference;
+    reference_sent = reference;
+    const ccsds124_params_t params = {ROBUSTNESS, frame_index % 20u == 0, reference, reference};
 
     bitbuffer_init(&packet);
     if (ccsds124_compress_packet(&sender, &input, &packet, &params) != CCSDS124_OK)
         return 2;
+    if (protect_mask)
+        mask_seal = mask_crc();
+    mask_bytes_checked = protect_mask ? 2u * (uint32_t)sizeof(sender.mask.data) : 0u;
     encoded_bits = (uint32_t)bitbuffer_size(&packet);
     encoded_bytes = (uint32_t)bitbuffer_to_bytes(&packet, wire_bytes, CCSDS124_MAX_OUTPUT_BYTES);
     if (encoded_bytes == 0 || encoded_bytes != (encoded_bits + 7u) / 8u)

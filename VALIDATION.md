@@ -1,5 +1,9 @@
 # Packaging validation — 22 October 2026
 
+The 9 November follow-up compares periodic and fault-triggered references
+against a shared byte ceiling. See the [method and limits](docs/reference-budget.md)
+and [recorded measurements](evidence/reference-budget/summary.json).
+
 The 8 November follow-up executes the C codec and two receiver paths over
 13,440 frame exchanges in Cortex-M4 emulation. The [Venus Express replay](docs/venus-state-replay.md)
 describes the independent checksum checks and the recorded gap measurements.

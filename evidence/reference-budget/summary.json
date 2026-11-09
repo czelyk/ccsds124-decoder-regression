@@ -1,0 +1,262 @@
+{
+  "compiler": "arm-none-eabi-gcc.exe (Arm GNU Toolchain 15.2.Rel1 (Build arm-15.86)) 15.2.1 20251203",
+  "flags": [
+    "-mcpu=cortex-m4",
+    "-mthumb",
+    "-O2",
+    "-std=c99",
+    "-fwrapv",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-nostdlib",
+    "-DCCSDS124_MAX_PACKET_LENGTH=720"
+  ],
+  "elf_sha256": "152211cee4d3c8cd2594b0de8ed51ddacf9007e3604e094c524512cc52768b33",
+  "dataset_sha256": "96fe8cdf2b862911bf3499c699dee1b58a080205e3e892d2c66a44082dae72c1",
+  "csv_sha256": "a422a38e71ed6e623b0941e0907790a6336dcb57d4ee5e048c5ead513700cbc8",
+  "physical_measurements": false,
+  "cases": 372,
+  "frames": 83328,
+  "wrong_delivered": 0,
+  "periodic_grid": [
+    5,
+    8,
+    10,
+    12,
+    16,
+    20,
+    25,
+    32,
+    50,
+    100
+  ],
+  "guarded_periods": [
+    16,
+    100
+  ],
+  "faults": [
+    [
+      23,
+      32
+    ],
+    [
+      23,
+      511
+    ],
+    [
+      61,
+      32
+    ],
+    [
+      61,
+      511
+    ],
+    [
+      101,
+      32
+    ],
+    [
+      101,
+      511
+    ],
+    [
+      158,
+      32
+    ],
+    [
+      158,
+      511
+    ]
+  ],
+  "by_slice": {
+    "0": {
+      "byte_ceiling": 13664,
+      "best_fixed_period": 12,
+      "periodic_worst_gap": 11,
+      "periodic_missing_samples": 23,
+      "periodic_max_bytes": 13273,
+      "guarded": {
+        "16": {
+          "fits_ceiling_in_all_cases": true,
+          "clean_bytes": 12783,
+          "mask_bytes_checked_per_packet": 184,
+          "before_check": {
+            "worst_gap": 0,
+            "missing_samples": 0,
+            "max_bytes": 12892,
+            "triggers": 8,
+            "cases_better_equal_worse": [
+              6,
+              2,
+              0
+            ]
+          },
+          "after_check": {
+            "worst_gap": 11,
+            "missing_samples": 27,
+            "max_bytes": 12792,
+            "triggers": 0,
+            "cases_better_equal_worse": [
+              1,
+              5,
+              2
+            ]
+          }
+        },
+        "100": {
+          "fits_ceiling_in_all_cases": true,
+          "clean_bytes": 11717,
+          "mask_bytes_checked_per_packet": 184,
+          "before_check": {
+            "worst_gap": 0,
+            "missing_samples": 0,
+            "max_bytes": 11827,
+            "triggers": 8,
+            "cases_better_equal_worse": [
+              6,
+              2,
+              0
+            ]
+          },
+          "after_check": {
+            "worst_gap": 99,
+            "missing_samples": 219,
+            "max_bytes": 11727,
+            "triggers": 0,
+            "cases_better_equal_worse": [
+              0,
+              5,
+              3
+            ]
+          }
+        }
+      }
+    },
+    "75000": {
+      "byte_ceiling": 11410,
+      "best_fixed_period": 12,
+      "periodic_worst_gap": 11,
+      "periodic_missing_samples": 42,
+      "periodic_max_bytes": 11016,
+      "guarded": {
+        "16": {
+          "fits_ceiling_in_all_cases": true,
+          "clean_bytes": 10501,
+          "mask_bytes_checked_per_packet": 184,
+          "before_check": {
+            "worst_gap": 0,
+            "missing_samples": 0,
+            "max_bytes": 10613,
+            "triggers": 8,
+            "cases_better_equal_worse": [
+              8,
+              0,
+              0
+            ]
+          },
+          "after_check": {
+            "worst_gap": 11,
+            "missing_samples": 50,
+            "max_bytes": 10512,
+            "triggers": 0,
+            "cases_better_equal_worse": [
+              2,
+              2,
+              4
+            ]
+          }
+        },
+        "100": {
+          "fits_ceiling_in_all_cases": true,
+          "clean_bytes": 9394,
+          "mask_bytes_checked_per_packet": 184,
+          "before_check": {
+            "worst_gap": 0,
+            "missing_samples": 0,
+            "max_bytes": 9506,
+            "triggers": 8,
+            "cases_better_equal_worse": [
+              8,
+              0,
+              0
+            ]
+          },
+          "after_check": {
+            "worst_gap": 99,
+            "missing_samples": 434,
+            "max_bytes": 9405,
+            "triggers": 0,
+            "cases_better_equal_worse": [
+              0,
+              2,
+              6
+            ]
+          }
+        }
+      }
+    },
+    "150176": {
+      "byte_ceiling": 12245,
+      "best_fixed_period": 12,
+      "periodic_worst_gap": 11,
+      "periodic_missing_samples": 37,
+      "periodic_max_bytes": 11854,
+      "guarded": {
+        "16": {
+          "fits_ceiling_in_all_cases": true,
+          "clean_bytes": 11347,
+          "mask_bytes_checked_per_packet": 184,
+          "before_check": {
+            "worst_gap": 0,
+            "missing_samples": 0,
+            "max_bytes": 11458,
+            "triggers": 8,
+            "cases_better_equal_worse": [
+              8,
+              0,
+              0
+            ]
+          },
+          "after_check": {
+            "worst_gap": 11,
+            "missing_samples": 43,
+            "max_bytes": 11359,
+            "triggers": 0,
+            "cases_better_equal_worse": [
+              2,
+              2,
+              4
+            ]
+          }
+        },
+        "100": {
+          "fits_ceiling_in_all_cases": true,
+          "clean_bytes": 10265,
+          "mask_bytes_checked_per_packet": 184,
+          "before_check": {
+            "worst_gap": 0,
+            "missing_samples": 0,
+            "max_bytes": 10376,
+            "triggers": 8,
+            "cases_better_equal_worse": [
+              8,
+              0,
+              0
+            ]
+          },
+          "after_check": {
+            "worst_gap": 99,
+            "missing_samples": 326,
+            "max_bytes": 10277,
+            "triggers": 0,
+            "cases_better_equal_worse": [
+              0,
+              3,
+              5
+            ]
+          }
+        }
+      }
+    }
+  }
+}
