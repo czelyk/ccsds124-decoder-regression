@@ -1,0 +1,283 @@
+{
+  "compiler": "arm-none-eabi-gcc.exe (Arm GNU Toolchain 15.2.Rel1 (Build arm-15.86)) 15.2.1 20251203",
+  "unicorn": "2.1.4",
+  "flags": [
+    "-mcpu=cortex-m4",
+    "-mthumb",
+    "-O2",
+    "-std=c99",
+    "-fwrapv",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-nostdlib",
+    "-DCCSDS124_MAX_PACKET_LENGTH=720",
+    "-DVENUS_LOCAL_VERIFY"
+  ],
+  "physical_measurements": false,
+  "dataset_sha256": "96fe8cdf2b862911bf3499c699dee1b58a080205e3e892d2c66a44082dae72c1",
+  "intact_cases_sha256": "1f0f89bb6dbb5ac1b87e211257b40e76afc94dd415cf6d9e04d32be757f0c101",
+  "cases_csv_sha256": "9991cefec27c65891f128a7f43cd468aff486d1f46e61c14508d8d73a66e3e42",
+  "cases": 387,
+  "source_samples": 86688,
+  "wrong_delivered": 0,
+  "by_policy_and_scenario": {
+    "periodic_12": {
+      "intact": {
+        "cases": 27,
+        "worst_gap": 11,
+        "unavailable_samples": 102,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          27,
+          0
+        ]
+      },
+      "initial_reference_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          3,
+          0
+        ]
+      },
+      "regular_packet_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          3,
+          0
+        ]
+      },
+      "before_fault": {
+        "cases": 24,
+        "worst_gap": 12,
+        "unavailable_samples": 131,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          24,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 24,
+        "worst_gap": 11,
+        "unavailable_samples": 104,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          24,
+          0
+        ]
+      },
+      "after_fault": {
+        "cases": 24,
+        "worst_gap": 13,
+        "unavailable_samples": 155,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          24,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 24,
+        "worst_gap": 13,
+        "unavailable_samples": 181,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          24,
+          0
+        ]
+      }
+    },
+    "verify_16": {
+      "intact": {
+        "cases": 27,
+        "worst_gap": 0,
+        "unavailable_samples": 0,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          22,
+          5,
+          0
+        ]
+      },
+      "initial_reference_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          3,
+          0
+        ]
+      },
+      "regular_packet_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          3,
+          0
+        ]
+      },
+      "before_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "unavailable_samples": 24,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          22,
+          2,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 24,
+        "worst_gap": 11,
+        "unavailable_samples": 122,
+        "cases_with_erased_retry": 22,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          5,
+          9,
+          10
+        ]
+      },
+      "after_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "unavailable_samples": 24,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          22,
+          2,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 24,
+        "worst_gap": 18,
+        "unavailable_samples": 166,
+        "cases_with_erased_retry": 22,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          9,
+          8,
+          7
+        ]
+      }
+    },
+    "verify_100": {
+      "intact": {
+        "cases": 27,
+        "worst_gap": 0,
+        "unavailable_samples": 0,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          22,
+          5,
+          0
+        ]
+      },
+      "initial_reference_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          3,
+          0
+        ]
+      },
+      "regular_packet_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          3,
+          0
+        ]
+      },
+      "before_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "unavailable_samples": 24,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          22,
+          2,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 24,
+        "worst_gap": 99,
+        "unavailable_samples": 981,
+        "cases_with_erased_retry": 22,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          10,
+          14
+        ]
+      },
+      "after_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "unavailable_samples": 24,
+        "cases_with_erased_retry": 0,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          22,
+          2,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 24,
+        "worst_gap": 99,
+        "unavailable_samples": 1073,
+        "cases_with_erased_retry": 22,
+        "cases_with_trailing_gap": 0,
+        "longest_gap_better_equal_worse_than_periodic": [
+          0,
+          9,
+          15
+        ]
+      }
+    }
+  }
+}

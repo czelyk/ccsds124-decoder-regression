@@ -37,7 +37,9 @@ def count_prepare(dut):
 
 
 def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, bit=0,
-           *, local_verify=None, instruction_counts=None, profile_rows=None):
+           *, local_verify=None, instruction_counts=None, profile_rows=None, erased_indices=()):
+    if any(index < 0 or index >= len(packets) for index in erased_indices):
+        raise ValueError('Erasure index is outside the replay')
     for name, value in (('reference_period', period), ('inject_at', fault), ('inject_bit', bit),
                         ('protect_mask', int(guarded)), ('inject_after_check', int(phase == 'after_check'))):
         set_word(dut, name, value)
@@ -49,12 +51,24 @@ def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, 
     missing = current_gap = longest_gap = wrong_delivered = wire_bytes = references = mask_bytes = 0
     trigger_indices = []
     retries = []
+    erased_references = []
+    erased_retries = []
+    first_erasure = min(erased_indices, default=len(packets))
     attempts = 0
     digest = hashlib.sha256()
     for index, packet in enumerate(packets):
         dut.u.mem_write(dut.names['input_bytes'], packet)
         measured = instruction_counts is not None and index in instruction_counts
-        if measured:
+        erased = index in erased_indices
+        if erased:
+            if measured:
+                raise ValueError('Instruction profiling and erasure overlap')
+            rc = dut.call('prepare_packet')
+            # receive_wire normally advances the fixture's shared sample index.
+            # Move the sender on without touching the receiver state.
+            if rc == 0:
+                set_word(dut, 'frame_index', index + 1)
+        elif measured:
             rc, instruction_counts[index] = count_prepare(dut)
         else:
             rc = dut.call('exchange')
@@ -80,13 +94,20 @@ def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, 
         tag = int.from_bytes(wire[-4:], 'little')
         if tag != zlib.crc32(packet):
             raise RuntimeError('Source CRC differs from the input oracle')
-        output = bytes(dut.u.mem_read(dut.names['basic_bytes'], PACKET_BYTES))
-        parsed = read_word(dut, 'basic_rc', signed=True) == 0
-        delivered = read_word(dut, 'basic_delivered') == 1
-        if delivered != (parsed and zlib.crc32(output) == tag):
-            raise RuntimeError('Receiver delivery differs from the independent CRC check')
-        correct = delivered and output == packet
-        if index < fault and not correct:
+        delivered = correct = False
+        if erased:
+            if read_word(dut, 'reference_sent'):
+                erased_references.append(index)
+            if retries and retries[-1] == index:
+                erased_retries.append(index)
+        else:
+            output = bytes(dut.u.mem_read(dut.names['basic_bytes'], PACKET_BYTES))
+            parsed = read_word(dut, 'basic_rc', signed=True) == 0
+            delivered = read_word(dut, 'basic_delivered') == 1
+            if delivered != (parsed and zlib.crc32(output) == tag):
+                raise RuntimeError('Receiver delivery differs from the independent CRC check')
+            correct = delivered and output == packet
+        if index < min(fault, first_erasure) and not correct:
             raise RuntimeError(f'Incorrect control or pre-fault output at {start}+{index}, K={period}')
         wrong_delivered += int(delivered and not correct)
         missing += int(not correct)
@@ -119,6 +140,9 @@ def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, 
     if local_verify is not None:
         record.update(local_verify=int(local_verify), local_attempts=attempts, local_retries=len(retries),
                       retry_indices=' '.join(map(str, retries)))
+    if erased_indices:
+        record.update(erased_references=' '.join(map(str, erased_references)),
+                      erased_retries=' '.join(map(str, erased_retries)), trailing_gap=current_gap)
     return record
 
 

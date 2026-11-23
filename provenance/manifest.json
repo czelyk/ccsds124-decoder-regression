@@ -18,8 +18,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 3725,
-      "sha256": "9acdff23e7995f9b16c5755551c284e2ca7f73acbd10436be953f27c2738351a"
+      "bytes": 4166,
+      "sha256": "ac9200974a40a0d34d37890eecdefb312cbbe61fa7565cc79accabc7c9994767"
     },
     {
       "path": "THIRD_PARTY_LICENSES/ccsds124-MIT.txt",
@@ -55,6 +55,11 @@
       "path": "docs/reference-budget.md",
       "bytes": 5151,
       "sha256": "17deea894008fb17110523339a1b67e7f9aebb5a600457b4d1a0527aac71bb09"
+    },
+    {
+      "path": "docs/reference-loss.md",
+      "bytes": 5331,
+      "sha256": "2f9639892c0b9cf4f24a326bdad51b5332b4aeb2b3aecdea509b56994d80f747"
     },
     {
       "path": "docs/sender-work.md",
@@ -105,6 +110,16 @@
       "path": "evidence/reference-budget/summary.json",
       "bytes": 5868,
       "sha256": "041961d8ebe00632c402afe1b9ff8d96ea57efe29b345f17fd91f86ddba00bfa"
+    },
+    {
+      "path": "evidence/reference-loss/cases.csv",
+      "bytes": 52166,
+      "sha256": "9991cefec27c65891f128a7f43cd468aff486d1f46e61c14508d8d73a66e3e42"
+    },
+    {
+      "path": "evidence/reference-loss/summary.json",
+      "bytes": 7079,
+      "sha256": "041eb315f57bdc03ee6eadb4eedebf002f8eb79388555d66e7cc6d5136a6fc09"
     },
     {
       "path": "evidence/sender-work/packets.csv",
@@ -188,8 +203,13 @@
     },
     {
       "path": "tests/run_reference_budget.py",
-      "bytes": 11123,
-      "sha256": "0c944d6478406903f440833772c14bb1871ecceb9d7669abfe2a68462afc4420"
+      "bytes": 12339,
+      "sha256": "13ff44db12e21edab3144f596f194e9b449d5e699fc111f7aa61195681c6c4f3"
+    },
+    {
+      "path": "tests/run_reference_loss.py",
+      "bytes": 6716,
+      "sha256": "375abeb32cfd6e2e6470556ddd1c563b999592771b20df26a6ced4a968024600"
     },
     {
       "path": "tests/run_sender_work.py",
