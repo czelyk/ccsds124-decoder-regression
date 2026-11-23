@@ -18,8 +18,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 4166,
-      "sha256": "ac9200974a40a0d34d37890eecdefb312cbbe61fa7565cc79accabc7c9994767"
+      "bytes": 4555,
+      "sha256": "313810894305f04e0a640aaf00eb0892693d2e20bb300a93fb82dfd64ff11bb8"
     },
     {
       "path": "THIRD_PARTY_LICENSES/ccsds124-MIT.txt",
@@ -60,6 +60,11 @@
       "path": "docs/reference-loss.md",
       "bytes": 5331,
       "sha256": "2f9639892c0b9cf4f24a326bdad51b5332b4aeb2b3aecdea509b56994d80f747"
+    },
+    {
+      "path": "docs/retuned-periodic.md",
+      "bytes": 4430,
+      "sha256": "c821f7ad2b630193c258102b850a62199ea8c14e2c099a8b54ad4fdc083cc376"
     },
     {
       "path": "docs/sender-work.md",
@@ -120,6 +125,21 @@
       "path": "evidence/reference-loss/summary.json",
       "bytes": 7079,
       "sha256": "041eb315f57bdc03ee6eadb4eedebf002f8eb79388555d66e7cc6d5136a6fc09"
+    },
+    {
+      "path": "evidence/retuned-periodic/cases.csv",
+      "bytes": 206184,
+      "sha256": "23cedce90e746899ad974e1ac37c2aa0ce0183e32dfe55767fd2edc4cdf76f37"
+    },
+    {
+      "path": "evidence/retuned-periodic/screening.csv",
+      "bytes": 1174,
+      "sha256": "5600139006a8b89696fdab2b406b2db5650ef80382efd7b42ebd21739f85c5dd"
+    },
+    {
+      "path": "evidence/retuned-periodic/summary.json",
+      "bytes": 6050,
+      "sha256": "a7bfd236d0c9dd6b1d01a4a76b490818c9de135046d9fd23b8a06f899729202d"
     },
     {
       "path": "evidence/sender-work/packets.csv",
@@ -210,6 +230,11 @@
       "path": "tests/run_reference_loss.py",
       "bytes": 6716,
       "sha256": "375abeb32cfd6e2e6470556ddd1c563b999592771b20df26a6ced4a968024600"
+    },
+    {
+      "path": "tests/run_retuned_periodic.py",
+      "bytes": 8848,
+      "sha256": "4be54ba790175fd51ea4dde3ba4e407850c83c7f35507846f8df2ebbaddc9bfe"
     },
     {
       "path": "tests/run_sender_work.py",

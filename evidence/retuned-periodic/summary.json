@@ -1,0 +1,337 @@
+{
+  "compiler": "arm-none-eabi-gcc.exe (Arm GNU Toolchain 15.2.Rel1 (Build arm-15.86)) 15.2.1 20251203",
+  "flags": [
+    "-mcpu=cortex-m4",
+    "-mthumb",
+    "-O2",
+    "-std=c99",
+    "-fwrapv",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-nostdlib",
+    "-DCCSDS124_MAX_PACKET_LENGTH=720"
+  ],
+  "unicorn": "2.1.4",
+  "dataset_sha256": "96fe8cdf2b862911bf3499c699dee1b58a080205e3e892d2c66a44082dae72c1",
+  "loss_archive_sha256": "9991cefec27c65891f128a7f43cd468aff486d1f46e61c14508d8d73a66e3e42",
+  "screening_cases": 459,
+  "periodic_cases": 1806,
+  "periodic_source_samples": 404544,
+  "globally_feasible_periods": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    25,
+    32,
+    50,
+    100
+  ],
+  "selected_period": 13,
+  "global_scores_gap_missing_bytes": {
+    "11": [
+      11,
+      688,
+      13481
+    ],
+    "12": [
+      13,
+      679,
+      13273
+    ],
+    "13": [
+      11,
+      374,
+      13176
+    ],
+    "14": [
+      12,
+      727,
+      12977
+    ],
+    "15": [
+      15,
+      693,
+      12889
+    ],
+    "16": [
+      18,
+      689,
+      12792
+    ],
+    "17": [
+      18,
+      735,
+      12802
+    ],
+    "18": [
+      14,
+      825,
+      12691
+    ],
+    "19": [
+      16,
+      1119,
+      12592
+    ],
+    "20": [
+      22,
+      1413,
+      12598
+    ],
+    "25": [
+      27,
+      1208,
+      12302
+    ],
+    "32": [
+      34,
+      1121,
+      12113
+    ],
+    "50": [
+      50,
+      2833,
+      11922
+    ],
+    "100": [
+      100,
+      5133,
+      11727
+    ]
+  },
+  "selected_per_slice": {
+    "0": 13,
+    "75000": 13,
+    "150176": 13
+  },
+  "matched_comparison": {
+    "periodic": {
+      "intact": {
+        "cases": 27,
+        "worst_gap": 4,
+        "unavailable_samples": 61,
+        "better_equal_worse": [
+          0,
+          27,
+          0
+        ]
+      },
+      "initial_reference_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "better_equal_worse": [
+          0,
+          3,
+          0
+        ]
+      },
+      "regular_packet_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "better_equal_worse": [
+          0,
+          3,
+          0
+        ]
+      },
+      "before_fault": {
+        "cases": 24,
+        "worst_gap": 5,
+        "unavailable_samples": 86,
+        "better_equal_worse": [
+          0,
+          24,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 24,
+        "worst_gap": 4,
+        "unavailable_samples": 63,
+        "better_equal_worse": [
+          0,
+          24,
+          0
+        ]
+      },
+      "after_fault": {
+        "cases": 24,
+        "worst_gap": 4,
+        "unavailable_samples": 65,
+        "better_equal_worse": [
+          0,
+          24,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 24,
+        "worst_gap": 11,
+        "unavailable_samples": 93,
+        "better_equal_worse": [
+          0,
+          24,
+          0
+        ]
+      }
+    },
+    "verify_16": {
+      "intact": {
+        "cases": 27,
+        "worst_gap": 0,
+        "unavailable_samples": 0,
+        "better_equal_worse": [
+          22,
+          5,
+          0
+        ]
+      },
+      "initial_reference_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "better_equal_worse": [
+          0,
+          3,
+          0
+        ]
+      },
+      "regular_packet_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "better_equal_worse": [
+          0,
+          3,
+          0
+        ]
+      },
+      "before_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "unavailable_samples": 24,
+        "better_equal_worse": [
+          22,
+          2,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 24,
+        "worst_gap": 11,
+        "unavailable_samples": 122,
+        "better_equal_worse": [
+          5,
+          10,
+          9
+        ]
+      },
+      "after_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "unavailable_samples": 24,
+        "better_equal_worse": [
+          22,
+          2,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 24,
+        "worst_gap": 18,
+        "unavailable_samples": 166,
+        "better_equal_worse": [
+          5,
+          8,
+          11
+        ]
+      }
+    },
+    "verify_100": {
+      "intact": {
+        "cases": 27,
+        "worst_gap": 0,
+        "unavailable_samples": 0,
+        "better_equal_worse": [
+          22,
+          5,
+          0
+        ]
+      },
+      "initial_reference_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "better_equal_worse": [
+          0,
+          3,
+          0
+        ]
+      },
+      "regular_packet_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "unavailable_samples": 3,
+        "better_equal_worse": [
+          0,
+          3,
+          0
+        ]
+      },
+      "before_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "unavailable_samples": 24,
+        "better_equal_worse": [
+          22,
+          2,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 24,
+        "worst_gap": 99,
+        "unavailable_samples": 981,
+        "better_equal_worse": [
+          0,
+          10,
+          14
+        ]
+      },
+      "after_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "unavailable_samples": 24,
+        "better_equal_worse": [
+          22,
+          2,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 24,
+        "worst_gap": 99,
+        "unavailable_samples": 1073,
+        "better_equal_worse": [
+          0,
+          8,
+          16
+        ]
+      }
+    }
+  },
+  "csv_sha256": {
+    "screening.csv": "5600139006a8b89696fdab2b406b2db5650ef80382efd7b42ebd21739f85c5dd",
+    "cases.csv": "23cedce90e746899ad974e1ac37c2aa0ce0183e32dfe55767fd2edc4cdf76f37"
+  },
+  "physical_measurements": false
+}

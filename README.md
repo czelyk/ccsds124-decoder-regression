@@ -83,6 +83,17 @@ when the receiver misses a repair packet or nearby data.
 .venv/Scripts/python tests/run_reference_loss.py --check
 ```
 
+## Retuning periodic references for packet loss
+
+The follow-up screens 17 periodic intervals against the original byte
+ceilings and selects a common interval using the original erasure cases.
+It pairs that result with the archived sender-verification policies.
+[Protocol and results](docs/retuned-periodic.md)
+
+```powershell
+.venv/Scripts/python tests/run_retuned_periodic.py --check
+```
+
 ## Scope
 
 The original test reproduces a fixed counterexample across four builds and
