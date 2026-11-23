@@ -71,6 +71,18 @@ copy. [Experiment and evidence](docs/sender-work.md)
 .venv/Scripts/python tests/run_sender_work.py --check
 ```
 
+## Recovery when a transmitted packet is lost
+
+The loss replay drops specified packets after sender encoding while
+keeping each sent stream and its byte budget identical to its intact-link
+control. It compares periodic references with the sender-side verifier
+when the receiver misses a repair packet or nearby data.
+[Protocol and results](docs/reference-loss.md)
+
+```powershell
+.venv/Scripts/python tests/run_reference_loss.py --check
+```
+
 ## Scope
 
 The original test reproduces a fixed counterexample across four builds and
