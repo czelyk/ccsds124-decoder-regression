@@ -1,0 +1,11 @@
+# Receiver gaps after a dropped POCKET+ reference
+
+Sender-side verification restored every sample in the earlier mask-fault replay when the link delivered every packet. This experiment tests how that result changes when an emitted packet never reaches the receiver.
+
+The protocol keeps the three previously examined 224-sample Venus Express slices, the eight mask flips per slice, the original source CRC gate and the same slice byte ceilings. Compare periodic K=12 and sender verification at K=16 and K=100. Each policy uses the same source sample indices for erasures. After successful encoding at an erased index, the sender advances normally while the receiver is never called. The model provides no feedback and no explicit loss notification to the receiver. Surviving packets arrive intact and in order.
+
+Clean-source controls erase nothing, one scheduled reference at index 0, or a regular packet at index 101. The fault cases erase nothing, one packet immediately before, at, or after the fault index, or three consecutive packets beginning at that index. Erasure at the fault index removes a repair reference if the sender produced one there. These are stress cases with equal packet indices across policies. They carry no assumed rates of mask faults or downlink loss.
+
+Budget accounting counts every emitted byte, including erased packets. Each loss run must reproduce the intact sender's archived wire digest, byte count and retry count. Check intact receiver outcomes against the archived campaign. Score unavailable samples, longest consecutive gap and any incorrect application delivery. Report whether the erased frames were full references or local retries. A worse longest gap in any paired loss case defeats an unconditional recovery advantage. A zero-gap outcome in the original intact-link campaign cannot carry over to an erased packet.
+
+CCSDS 124 defines packet-loss robustness and full mask transmission. Prior work evaluates decoder resynchronization and the cost of redundancy. Here the comparison couples the existing encoder-mask upset with a downstream erasure while preserving the existing receiver policy. [CCSDS 124.0-B-1](https://ccsds.org/Pubs/124x0b1.pdf) · [Hernández-Cabronero et al.](https://doi.org/10.1109/ACCESS.2024.3374227)
