@@ -1,0 +1,323 @@
+{
+  "compiler": "arm-none-eabi-gcc.exe (Arm GNU Toolchain 15.2.Rel1 (Build arm-15.86)) 15.2.1 20251203",
+  "flags": [
+    "-mcpu=cortex-m4",
+    "-mthumb",
+    "-O2",
+    "-std=c99",
+    "-fwrapv",
+    "-ffreestanding",
+    "-fno-builtin",
+    "-nostdlib",
+    "-DCCSDS124_MAX_PACKET_LENGTH=720",
+    "-DVENUS_LOCAL_VERIFY"
+  ],
+  "unicorn": "2.1.4",
+  "source_samples_per_case": 224,
+  "physical_measurements": false,
+  "dataset_sha256": "96fe8cdf2b862911bf3499c699dee1b58a080205e3e892d2c66a44082dae72c1",
+  "archive_hashes": {
+    "reference-loss/cases.csv": "9991cefec27c65891f128a7f43cd468aff486d1f46e61c14508d8d73a66e3e42",
+    "retuned-periodic/cases.csv": "23cedce90e746899ad974e1ac37c2aa0ce0183e32dfe55767fd2edc4cdf76f37"
+  },
+  "training_cases": 774,
+  "shifted_cases": 432,
+  "verified_archived_k16_cases": 129,
+  "selected_verifier": 11,
+  "tuning_metrics": {
+    "11": {
+      "cases": 129,
+      "worst_gap": 10,
+      "missing": 328,
+      "maximum_bytes": 13581,
+      "over_cap_rows": 0
+    },
+    "12": {
+      "cases": 129,
+      "worst_gap": 13,
+      "missing": 339,
+      "maximum_bytes": 13373,
+      "over_cap_rows": 0
+    },
+    "13": {
+      "cases": 129,
+      "worst_gap": 11,
+      "missing": 210,
+      "maximum_bytes": 13276,
+      "over_cap_rows": 0
+    },
+    "14": {
+      "cases": 129,
+      "worst_gap": 11,
+      "missing": 348,
+      "maximum_bytes": 13077,
+      "over_cap_rows": 0
+    },
+    "15": {
+      "cases": 129,
+      "worst_gap": 14,
+      "missing": 328,
+      "maximum_bytes": 12989,
+      "over_cap_rows": 0
+    },
+    "16": {
+      "cases": 129,
+      "worst_gap": 18,
+      "missing": 342,
+      "maximum_bytes": 12892,
+      "over_cap_rows": 0
+    }
+  },
+  "training_comparison": {
+    "verify_11": {
+      "all": {
+        "cases": 129,
+        "worst_gap": 10,
+        "missing": 328,
+        "maximum_bytes": 13581,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          68,
+          33,
+          28
+        ]
+      },
+      "intact": {
+        "cases": 27,
+        "worst_gap": 0,
+        "missing": 0,
+        "maximum_bytes": 13581,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          22,
+          5,
+          0
+        ]
+      },
+      "initial_reference_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "missing": 3,
+        "maximum_bytes": 13472,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          0,
+          3,
+          0
+        ]
+      },
+      "regular_packet_loss": {
+        "cases": 3,
+        "worst_gap": 1,
+        "missing": 3,
+        "maximum_bytes": 13472,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          0,
+          3,
+          0
+        ]
+      },
+      "before_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "missing": 24,
+        "maximum_bytes": 13581,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          22,
+          2,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 24,
+        "worst_gap": 10,
+        "missing": 126,
+        "maximum_bytes": 13581,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          0,
+          10,
+          14
+        ]
+      },
+      "after_fault": {
+        "cases": 24,
+        "worst_gap": 1,
+        "missing": 24,
+        "maximum_bytes": 13581,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          22,
+          2,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 24,
+        "worst_gap": 10,
+        "missing": 148,
+        "maximum_bytes": 13581,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          2,
+          8,
+          14
+        ]
+      }
+    }
+  },
+  "shifted_comparison": {
+    "periodic_13": {
+      "all": {
+        "cases": 144,
+        "worst_gap": 13,
+        "missing": 772,
+        "maximum_bytes": 13174,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          0,
+          144,
+          0
+        ]
+      },
+      "intact": {
+        "cases": 48,
+        "worst_gap": 10,
+        "missing": 231,
+        "maximum_bytes": 13174,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          0,
+          48,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 48,
+        "worst_gap": 10,
+        "missing": 240,
+        "maximum_bytes": 13174,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          0,
+          48,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 48,
+        "worst_gap": 13,
+        "missing": 301,
+        "maximum_bytes": 13174,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          0,
+          48,
+          0
+        ]
+      }
+    },
+    "verify_11": {
+      "all": {
+        "cases": 144,
+        "worst_gap": 10,
+        "missing": 415,
+        "maximum_bytes": 13575,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          112,
+          26,
+          6
+        ]
+      },
+      "intact": {
+        "cases": 48,
+        "worst_gap": 0,
+        "missing": 0,
+        "maximum_bytes": 13575,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          42,
+          6,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 48,
+        "worst_gap": 7,
+        "missing": 180,
+        "maximum_bytes": 13575,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          36,
+          9,
+          3
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 48,
+        "worst_gap": 10,
+        "missing": 235,
+        "maximum_bytes": 13575,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          34,
+          11,
+          3
+        ]
+      }
+    },
+    "verify_13": {
+      "all": {
+        "cases": 144,
+        "worst_gap": 13,
+        "missing": 541,
+        "maximum_bytes": 13271,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          42,
+          102,
+          0
+        ]
+      },
+      "intact": {
+        "cases": 48,
+        "worst_gap": 0,
+        "missing": 0,
+        "maximum_bytes": 13271,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          42,
+          6,
+          0
+        ]
+      },
+      "at_fault": {
+        "cases": 48,
+        "worst_gap": 10,
+        "missing": 240,
+        "maximum_bytes": 13271,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          0,
+          48,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "cases": 48,
+        "worst_gap": 13,
+        "missing": 301,
+        "maximum_bytes": 13271,
+        "over_cap_rows": 0,
+        "shorter_equal_longer": [
+          0,
+          48,
+          0
+        ]
+      }
+    }
+  }
+}

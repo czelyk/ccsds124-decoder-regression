@@ -1,0 +1,64 @@
+{
+  "grid": [
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "feasible": [
+    11,
+    12,
+    13,
+    14,
+    15,
+    16
+  ],
+  "metrics": {
+    "11": {
+      "cases": 129,
+      "worst_gap": 10,
+      "missing": 328,
+      "maximum_bytes": 13581,
+      "over_cap_rows": 0
+    },
+    "12": {
+      "cases": 129,
+      "worst_gap": 13,
+      "missing": 339,
+      "maximum_bytes": 13373,
+      "over_cap_rows": 0
+    },
+    "13": {
+      "cases": 129,
+      "worst_gap": 11,
+      "missing": 210,
+      "maximum_bytes": 13276,
+      "over_cap_rows": 0
+    },
+    "14": {
+      "cases": 129,
+      "worst_gap": 11,
+      "missing": 348,
+      "maximum_bytes": 13077,
+      "over_cap_rows": 0
+    },
+    "15": {
+      "cases": 129,
+      "worst_gap": 14,
+      "missing": 328,
+      "maximum_bytes": 12989,
+      "over_cap_rows": 0
+    },
+    "16": {
+      "cases": 129,
+      "worst_gap": 18,
+      "missing": 342,
+      "maximum_bytes": 12892,
+      "over_cap_rows": 0
+    }
+  },
+  "selected": 11
+}

@@ -1,0 +1,109 @@
+{
+  "builds": {
+    "periodic": {
+      "compiler": "arm-none-eabi-gcc.exe (Arm GNU Toolchain 15.2.Rel1 (Build arm-15.86)) 15.2.1 20251203",
+      "flags": [
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-std=c99",
+        "-fwrapv",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=720"
+      ],
+      "sections": {
+        ".text": 11656,
+        ".data": 0,
+        ".bss": 6802
+      }
+    },
+    "verify": {
+      "compiler": "arm-none-eabi-gcc.exe (Arm GNU Toolchain 15.2.Rel1 (Build arm-15.86)) 15.2.1 20251203",
+      "flags": [
+        "-mcpu=cortex-m4",
+        "-mthumb",
+        "-O2",
+        "-std=c99",
+        "-fwrapv",
+        "-ffreestanding",
+        "-fno-builtin",
+        "-nostdlib",
+        "-DCCSDS124_MAX_PACKET_LENGTH=720",
+        "-DVENUS_LOCAL_VERIFY"
+      ],
+      "sections": {
+        ".text": 12080,
+        ".data": 0,
+        ".bss": 10642
+      }
+    }
+  },
+  "unicorn": "2.1.4",
+  "interval": 11,
+  "dataset_sha256": "96fe8cdf2b862911bf3499c699dee1b58a080205e3e892d2c66a44082dae72c1",
+  "input_case_sha256": {
+    "shifted_cases.csv": "2e18ca4fc5b3f182aafaf50e46a11b1c579ce25452c275de4962738cc1dbf602",
+    "shifted_periodic11.csv": "88a3593764f1935ebdd4b6278e705a062628d9228a5700b622bb3e5cc8a3dfbe"
+  },
+  "clean_wire_sha256": {
+    "0": "6ef814d784ef3ace70db55f059d46353d7620784b087d40e40dddbd6cdfcc38b",
+    "75000": "7939a6be8a36a0738dced957ead09ed8ffc1f294383c8c8a68fb8833dbc9f21a",
+    "150176": "3b663564b71d11346fc5c464e84fbdb12df9cb1102fd4cab328850ae86f40724"
+  },
+  "physical_measurements": false,
+  "profiled_packets": 1440,
+  "packets_csv_sha256": "c048d7f40f823a63e31cda47a1959258d124f4f0ef2c17601f84b12b5c771344",
+  "measurements": {
+    "periodic": {
+      "clean_delta": {
+        "count": 603,
+        "median_instructions": 28920,
+        "max_instructions": 46622,
+        "max_stack_depth_bytes": 256
+      },
+      "clean_reference": {
+        "count": 69,
+        "median_instructions": 43029,
+        "max_instructions": 60102,
+        "max_stack_depth_bytes": 256
+      },
+      "injected": {
+        "count": 48,
+        "median_instructions": 29095,
+        "max_instructions": 42854,
+        "max_stack_depth_bytes": 256
+      },
+      "retry": {
+        "count": 0
+      }
+    },
+    "verify": {
+      "clean_delta": {
+        "count": 603,
+        "median_instructions": 48366,
+        "max_instructions": 83476,
+        "max_stack_depth_bytes": 6780
+      },
+      "clean_reference": {
+        "count": 69,
+        "median_instructions": 96170,
+        "max_instructions": 137240,
+        "max_stack_depth_bytes": 3904
+      },
+      "injected": {
+        "count": 48,
+        "median_instructions": 135496,
+        "max_instructions": 153408,
+        "max_stack_depth_bytes": 6780
+      },
+      "retry": {
+        "count": 42,
+        "median_instructions": 136093,
+        "max_instructions": 153408,
+        "max_stack_depth_bytes": 6780
+      }
+    }
+  }
+}

@@ -1,0 +1,10 @@
+slice_start,policy,interval,cap,max_bytes,over_cap_cases
+0,periodic,13,13664,13174,0
+0,verify,11,13664,13575,0
+0,verify,13,13664,13271,0
+75000,periodic,13,11410,10906,0
+75000,verify,11,11410,11311,0
+75000,verify,13,11410,11007,0
+150176,periodic,13,12245,11747,0
+150176,verify,11,12245,12139,0
+150176,verify,13,12245,11847,0

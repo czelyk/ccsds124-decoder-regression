@@ -94,6 +94,20 @@ It pairs that result with the archived sender-verification policies.
 .venv/Scripts/python tests/run_retuned_periodic.py --check
 ```
 
+## Matched-cadence decision recheck
+
+The recheck tunes the verification interval on the original matrix and
+tests it at previously unused fault positions. At K=11, the two policies
+have identical gaps in all 96 erasure cases. Verification removes the
+sender-fault gaps when the link delivers the repair. The paired sender
+profile measures the instruction and stack cost of that trade-off.
+[Phase comparison and resource measurements](docs/decision-recheck.md)
+
+```powershell
+.venv/Scripts/python tests/run_decision_recheck.py --check
+.venv/Scripts/python tests/run_matched_sender_cost.py --check
+```
+
 ## Scope
 
 The original test reproduces a fixed counterexample across four builds and

@@ -1,0 +1,163 @@
+{
+  "comparison": {
+    "periodic_11": {
+      "all": {
+        "worst": 10,
+        "missing": 583,
+        "versus_periodic11": [
+          0,
+          144,
+          0
+        ]
+      },
+      "intact": {
+        "worst": 7,
+        "missing": 168,
+        "versus_periodic11": [
+          0,
+          48,
+          0
+        ]
+      },
+      "at_fault": {
+        "worst": 7,
+        "missing": 180,
+        "versus_periodic11": [
+          0,
+          48,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "worst": 10,
+        "missing": 235,
+        "versus_periodic11": [
+          0,
+          48,
+          0
+        ]
+      }
+    },
+    "periodic_13": {
+      "all": {
+        "worst": 13,
+        "missing": 772,
+        "versus_periodic11": [
+          9,
+          26,
+          109
+        ]
+      },
+      "intact": {
+        "worst": 10,
+        "missing": 231,
+        "versus_periodic11": [
+          3,
+          6,
+          39
+        ]
+      },
+      "at_fault": {
+        "worst": 10,
+        "missing": 240,
+        "versus_periodic11": [
+          3,
+          9,
+          36
+        ]
+      },
+      "burst_at_fault": {
+        "worst": 13,
+        "missing": 301,
+        "versus_periodic11": [
+          3,
+          11,
+          34
+        ]
+      }
+    },
+    "verify_11": {
+      "all": {
+        "worst": 10,
+        "missing": 415,
+        "versus_periodic11": [
+          42,
+          102,
+          0
+        ]
+      },
+      "intact": {
+        "worst": 0,
+        "missing": 0,
+        "versus_periodic11": [
+          42,
+          6,
+          0
+        ]
+      },
+      "at_fault": {
+        "worst": 7,
+        "missing": 180,
+        "versus_periodic11": [
+          0,
+          48,
+          0
+        ]
+      },
+      "burst_at_fault": {
+        "worst": 10,
+        "missing": 235,
+        "versus_periodic11": [
+          0,
+          48,
+          0
+        ]
+      }
+    },
+    "verify_13": {
+      "all": {
+        "worst": 13,
+        "missing": 541,
+        "versus_periodic11": [
+          48,
+          26,
+          70
+        ]
+      },
+      "intact": {
+        "worst": 0,
+        "missing": 0,
+        "versus_periodic11": [
+          42,
+          6,
+          0
+        ]
+      },
+      "at_fault": {
+        "worst": 10,
+        "missing": 240,
+        "versus_periodic11": [
+          3,
+          9,
+          36
+        ]
+      },
+      "burst_at_fault": {
+        "worst": 13,
+        "missing": 301,
+        "versus_periodic11": [
+          3,
+          11,
+          34
+        ]
+      }
+    }
+  },
+  "csv_sha256": {
+    "shifted_cases.csv": "2e18ca4fc5b3f182aafaf50e46a11b1c579ce25452c275de4962738cc1dbf602",
+    "shifted_periodic11.csv": "88a3593764f1935ebdd4b6278e705a062628d9228a5700b622bb3e5cc8a3dfbe",
+    "shifted_screen.csv": "7518da8a50fabb5241875b5389da63f58635817f27f5ab16e1c1c02f5f3071bf",
+    "tuning_cases.csv": "12dff44ef08534dabc8fb683bafcd1cc2c2896c61aa97d2e77a6e85a43459233",
+    "tuning_screen.csv": "06db323c6fd8c4071698e9ce3ed5e0c6b4f521135edb7384d94449c11c4bb5da"
+  }
+}

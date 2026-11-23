@@ -37,7 +37,8 @@ def count_prepare(dut):
 
 
 def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, bit=0,
-           *, local_verify=None, instruction_counts=None, profile_rows=None, erased_indices=()):
+           *, local_verify=None, instruction_counts=None, profile_rows=None, erased_indices=(),
+           prepare_counter=count_prepare):
     if any(index < 0 or index >= len(packets) for index in erased_indices):
         raise ValueError('Erasure index is outside the replay')
     for name, value in (('reference_period', period), ('inject_at', fault), ('inject_bit', bit),
@@ -69,7 +70,7 @@ def replay(dut, packets, start, period, guarded, phase='clean', fault=NO_FAULT, 
             if rc == 0:
                 set_word(dut, 'frame_index', index + 1)
         elif measured:
-            rc, instruction_counts[index] = count_prepare(dut)
+            rc, instruction_counts[index] = prepare_counter(dut)
         else:
             rc = dut.call('exchange')
         if rc != 0:
